@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="DC">
+  <defs>
+    <linearGradient id="dc-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5eead4" />
+      <stop offset="0.55" stop-color="#2dd4bf" />
+      <stop offset="1" stop-color="#0d9488" />
+    </linearGradient>
+    <linearGradient id="dc-sheen" x1="0" y1="0" x2="0" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="32" height="32" rx="8.5" fill="url(#dc-bg)" />
+  <rect width="32" height="16" rx="8.5" fill="url(#dc-sheen)" />
+
+  <!-- Monogram DC digambar sebagai path (bukan <text>) supaya tampilan
+       konsisten di semua browser dan tidak bergantung font yang tersedia.
+       Warna monogram memakai charcoal agar kontras di atas turquoise. -->
+  <g fill="#04211d">
+    <!-- D -->
+    <path d="M7.4 9.2h4.1c3 0 4.95 1.86 4.95 4.8s-1.95 4.8-4.95 4.8H7.4V9.2Zm3.65 2.8v4h.35c1.26 0 1.98-.8 1.98-2s-.72-2-1.98-2h-.35Z" />
+  </g>
+
+  <!-- C digambar sebagai busur dengan ujung membulat supaya terminalnya
+       bersih di ukuran besar maupun di favicon 16px. -->
+  <path
+    d="M23.2 12.4a4 4 0 1 0 0 7.2"
+    fill="none"
+    stroke="#04211d"
+    stroke-width="3.1"
+    stroke-linecap="round"
+  />
+</svg>

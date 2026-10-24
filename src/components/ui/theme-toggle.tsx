@@ -29,7 +29,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      aria-label={isDark ? "Ganti ke tema terang" : "Ganti ke tema gelap"}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
         "relative flex h-10 w-10 items-center justify-center rounded-full",

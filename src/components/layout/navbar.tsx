@@ -42,6 +42,16 @@ export function Navbar() {
     };
   }, [open]);
 
+  // Escape menutup sheet mobile — perilaku dialog yang diharapkan keyboard user.
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const handleNav = React.useCallback(
     (id: string) => {
       setOpen(false);
@@ -59,7 +69,10 @@ export function Navbar() {
     [scrollTo, onHome, router],
   );
 
-  const isActive = (id: string) => activeId === id;
+  // Di halaman non-home hanya `#kontak` (footer) yang ada di DOM, jadi
+  // scroll-spy akan selalu menyimpulkan "Contact" aktif — itu menyesatkan.
+  // Indikator tab hanya dihitung di beranda tempat seluruh section ada.
+  const isActive = (id: string) => onHome && activeId === id;
 
   return (
     <>
@@ -83,13 +96,13 @@ export function Navbar() {
             "mx-auto flex w-full max-w-6xl items-center justify-between px-4 transition-[padding,height] duration-400 sm:px-6",
             scrolled ? "h-14" : "h-16 sm:h-[72px]",
           )}
-          aria-label="Navigasi utama"
+          aria-label="Main navigation"
         >
           <button
             type="button"
             onClick={() => handleNav("top")}
             className="group relative flex items-center gap-2.5"
-            aria-label={`${site.name} — kembali ke atas`}
+            aria-label={`${site.name} — back to top`}
           >
             <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] shadow-[var(--shadow-card)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[var(--shadow-card-hover)]">
               <span className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-soft)] to-[var(--color-accent-soft)] opacity-80" />
@@ -109,7 +122,7 @@ export function Navbar() {
                 key={link.id}
                 type="button"
                 onClick={() => handleNav(link.id)}
-                aria-current={isActive(link.id) ? "true" : undefined}
+                aria-current={isActive(link.id) ? "page" : undefined}
                 className={cn(
                   "relative rounded-full px-3 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] transition-colors duration-300",
                   isActive(link.id)
@@ -145,7 +158,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              aria-label={open ? "Tutup menu" : "Buka menu"}
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] text-[var(--color-ink)] transition-all duration-300 active:scale-95 lg:hidden"
             >
@@ -192,7 +205,8 @@ export function Navbar() {
               transition={spring.soft}
               className="fixed inset-x-3 bottom-3 z-50 origin-bottom rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] p-2 shadow-[var(--shadow-float)] lg:hidden"
               role="dialog"
-              aria-label="Menu navigasi"
+              aria-modal="true"
+              aria-label="Navigation menu"
             >
               <div className="mx-auto mb-2 h-1 w-9 rounded-full bg-[var(--color-line-2)]" />
               <ul className="flex flex-col">
@@ -206,7 +220,7 @@ export function Navbar() {
                     <button
                       type="button"
                       onClick={() => handleNav(link.id)}
-                      aria-current={isActive(link.id) ? "true" : undefined}
+                      aria-current={isActive(link.id) ? "page" : undefined}
                       className={cn(
                         "flex min-h-[48px] w-full items-center justify-between rounded-xl px-4 text-[14px] font-semibold uppercase tracking-[0.12em] transition-colors",
                         isActive(link.id)
@@ -244,7 +258,7 @@ export function Navbar() {
                   rel="noopener noreferrer"
                   className="flex min-h-[44px] flex-1 items-center justify-center rounded-xl bg-[var(--color-primary)] text-[14px] font-semibold text-[var(--color-on-primary)] transition-transform active:scale-95"
                 >
-                  Hubungi
+                  Contact
                 </a>
               </div>
             </motion.div>

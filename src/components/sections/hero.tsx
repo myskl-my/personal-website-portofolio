@@ -59,7 +59,9 @@ export function Hero() {
             {...fade(0.12, 22)}
             className="mt-6 text-[clamp(2.3rem,8.5vw,4.5rem)] leading-[1.03] font-semibold tracking-[-0.035em] text-balance text-[var(--color-ink)]"
           >
-            Building Digital Products{" "}
+            {/* Potong dua bagian terakhir ("With AI") untuk gradient —
+                kalau teks headline berubah, sisanya tetap terbaca utuh. */}
+            {site.headline.replace(/\sWith AI$/, "")}{" "}
             <span className="text-gradient">With AI</span>
           </motion.h1>
 

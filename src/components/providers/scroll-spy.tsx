@@ -36,7 +36,7 @@ export function ScrollSpyProvider({
   const [activeId, setActiveId] = React.useState(sections[0] ?? "");
   const [nodes, setNodes] = React.useState<Record<string, HTMLElement>>({});
 
-  // Simpan element per id di state (bukan ref) supaya Provider ikut re-render
+  // Disimpan per id di state (bukan ref) supaya Provider ikut re-render
   // saat section baru muncul — Observer baru lalu dipasang ulang.
   const register = React.useCallback((id: string, el: HTMLElement | null) => {
     setNodes((prev) => {
@@ -51,7 +51,12 @@ export function ScrollSpyProvider({
     });
   }, []);
 
-  const present = sections.filter((id) => nodes[id]);
+  // Di-memo berdasarkan nodes: tanpa ini array baru terbentuk tiap render
+  // dan effect di bawah bongkar-pasang listener scroll percuma.
+  const present = React.useMemo(
+    () => sections.filter((id) => nodes[id]),
+    [sections, nodes],
+  );
   const presentKey = present.join("|");
 
   /**

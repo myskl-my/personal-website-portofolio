@@ -1,4 +1,5 @@
-import type { Profile, Project, Skill } from "./types";
+import type { Profile, Project } from "./types";
+import { site } from "@/lib/site";
 
 /**
  * Seed lokal — dibundel ke dalam build, jadi situs selalu bisa jalan
@@ -24,15 +25,18 @@ import type { Profile, Project, Skill } from "./types";
  *   di sini apa adanya, jangan mengarang angka atau hasil yang belum terukur.
  */
 
+/**
+ * Profil kontak — sumber kebenaran tunggal ada di `lib/site.ts`.
+ * Field tambahan (availability) hanya diisi di sini karena tidak dipakai
+ * oleh komponen lain.
+ */
 export const profile: Profile = {
-  name: "Diki Candra",
-  tagline: "Where Ideas Become Reality.",
-  email: "dikicandra121204@gmail.com",
-  github: "https://github.com/myskl-my",
-  whatsapp: "+62 813-1343-9307",
-  whatsappLink: "https://wa.me/6281313439307",
-  // avatarUrl: "/avatar.jpg",
-  // location: "Indonesia",
+  name: site.name,
+  tagline: site.tagline,
+  email: site.email,
+  github: site.github,
+  whatsapp: site.whatsapp,
+  whatsappLink: site.whatsappLink,
   availability: "Terbuka untuk proyek baru",
 };
 
@@ -234,47 +238,6 @@ export const projects: Project[] = [
 
     featured: false,
     status: "published",
-    order: 5,
-  },
-];
-
-export const skills: Skill[] = [
-  {
-    name: "Placeholder Skill 1",
-    category: "language",
-    level: 4,
-    years: 3,
-    featured: true,
-    order: 1,
-  },
-  {
-    name: "Placeholder Skill 2",
-    category: "framework",
-    level: 4,
-    years: 2,
-    featured: true,
-    order: 2,
-  },
-  {
-    name: "Placeholder Skill 3",
-    category: "database",
-    level: 3,
-    years: 2,
-    featured: true,
-    order: 3,
-  },
-  {
-    name: "Placeholder Skill 4",
-    category: "infrastructure",
-    level: 3,
-    featured: false,
-    order: 4,
-  },
-  {
-    name: "Placeholder Skill 5",
-    category: "tool",
-    level: 3,
-    featured: false,
     order: 5,
   },
 ];

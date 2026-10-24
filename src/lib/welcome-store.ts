@@ -59,7 +59,10 @@ export function initWelcome(pathname: string): void {
   if (typeof window === "undefined") return;
 
   // Hanya di beranda. Halaman lain (mis. /projects) langsung dianggap selesai.
-  const eligible = pathname === "/";
+  // Kalau ada hash (mis. `/#kontak` dari link "Hubungi saya"), intro dilewati
+  // supaya browser bisa langsung menggulir ke target tanpa ditahan overlay.
+  const hasHash = typeof window !== "undefined" && window.location.hash.length > 1;
+  const eligible = pathname === "/" && !hasHash;
 
   let seen = false;
   try {

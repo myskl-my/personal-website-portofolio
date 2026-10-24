@@ -17,7 +17,7 @@ export function ScrollTopButton({ className }: { className?: string }) {
       onClick={() => scrollToElement(window, { duration: 800 })}
       className={className}
     >
-      Kembali ke atas
+      Back to top
       <ArrowUp className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />
     </button>
   );

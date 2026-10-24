@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.title,
     description: project.summary,
-    alternates: { canonical: `/projects/${project.slug}` },
+    alternates: { canonical: `/projects/${project.slug}/` },
     openGraph: {
       type: "article",
       title: project.title,
@@ -88,7 +88,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         className="group inline-flex items-center gap-2 text-[13.5px] font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
       >
         <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
-        Semua project
+        All projects
       </Link>
 
       {/* header */}
@@ -114,7 +114,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           ))}
           {project.featured && (
             <span className="rounded-full border border-[var(--color-primary)]/40 bg-[var(--color-primary-soft)] px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-primary)]">
-              Unggulan
+              Featured
             </span>
           )}
         </div>
@@ -130,7 +130,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
           <div>
             <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">
-              Peran
+              Role
             </dt>
             <dd className="mt-1 text-[14px] font-medium text-[var(--color-ink)]">
               {project.role}
@@ -138,7 +138,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
           <div>
             <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">
-              Waktu
+              Timeline
             </dt>
             <dd className="mt-1 text-[14px] font-medium text-[var(--color-ink)]">
               {project.timeline}
@@ -170,7 +170,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             }}
           >
             <span className="text-[13px] font-medium text-[var(--color-muted)]">
-              Belum ada gambar sampul
+              No cover image yet
             </span>
           </div>
         )}
@@ -311,11 +311,10 @@ export default async function ProjectDetailPage({ params }: Props) {
             <div className="flex flex-col items-center rounded-2xl border border-dashed border-[var(--color-line-2)] px-6 py-12 text-center">
               <ImageIcon className="h-8 w-8 text-[var(--color-muted)]" />
               <p className="mt-3 text-[14px] font-medium text-[var(--color-ink)]">
-                Screenshot belum tersedia
+                Screenshots not available yet
               </p>
               <p className="mt-1 max-w-sm text-[13.5px] leading-relaxed text-[var(--color-muted)]">
-                Tangkapan layar akan ditambahkan setelah project siap
-                dipublikasikan.
+                Screenshots will be added once the project is ready to publish.
               </p>
             </div>
           )}
@@ -325,7 +324,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       {/* navigasi prev / next */}
       {(prev || next) && (
         <nav
-          aria-label="Navigasi project"
+          aria-label="Project navigation"
           className="mt-14 grid gap-3 border-t border-[var(--color-line)] pt-8 sm:grid-cols-2"
         >
           {prev ? (
@@ -335,7 +334,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             >
               <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-[var(--color-muted)]">
                 <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-                Sebelumnya
+                Previous
               </span>
               <span className="mt-1.5 text-[15px] font-semibold text-[var(--color-ink)]">
                 {prev.title}
@@ -350,7 +349,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               className="group surface surface-hover flex flex-col rounded-2xl p-4 sm:items-end sm:text-right"
             >
               <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-[var(--color-muted)]">
-                Selanjutnya
+                Next
                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </span>
               <span className="mt-1.5 text-[15px] font-semibold text-[var(--color-ink)]">
@@ -368,7 +367,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           href="/#kontak"
           className="font-medium text-[var(--color-ink)] underline-offset-4 transition-colors hover:text-[var(--color-primary)] hover:underline"
         >
-          Tertarik bekerja sama? Hubungi saya.
+          Interested in working together? Get in touch.
         </Link>
       </div>
     </article>

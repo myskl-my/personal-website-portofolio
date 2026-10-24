@@ -1,8 +1,7 @@
-import type { Category, Platform, Profile, Project, Skill } from "./types";
-import { profile as localProfile, projects as localProjects, skills as localSkills } from "./local";
+import type { Project } from "./types";
+import { projects as localProjects } from "./local";
 import {
   fetchProjectsFromSupabase,
-  fetchSkillsFromSupabase,
   isSupabaseConfigured,
 } from "./supabase";
 
@@ -33,17 +32,6 @@ async function resolveProjects(): Promise<Project[]> {
   return onlyPublished(localProjects);
 }
 
-async function resolveSkills(): Promise<Skill[]> {
-  if (isSupabaseConfigured()) {
-    try {
-      return (await fetchSkillsFromSupabase()).sort((a, b) => a.order - b.order);
-    } catch (err) {
-      console.warn("[data] Supabase gagal, memakai seed lokal.", err);
-    }
-  }
-  return [...localSkills].sort((a, b) => a.order - b.order);
-}
-
 /** Semua project yang sudah published, urut. */
 export async function getProjects(): Promise<Project[]> {
   return resolveProjects();
@@ -59,24 +47,6 @@ export async function getProject(slug: string): Promise<Project | undefined> {
   return (await resolveProjects()).find((p) => p.slug === slug);
 }
 
-/** Project milik satu kategori. */
-export async function getProjectsByCategory(category: Category): Promise<Project[]> {
-  return (await resolveProjects()).filter((p) => p.category === category);
-}
-
-/** Project yang bisa dijalankan di platform tertentu. */
-export async function getProjectsByPlatform(platform: Platform): Promise<Project[]> {
-  return (await resolveProjects()).filter((p) => p.platforms.includes(platform));
-}
-
-export async function getSkills(): Promise<Skill[]> {
-  return resolveSkills();
-}
-
-export async function getFeaturedSkills(): Promise<Skill[]> {
-  return (await resolveSkills()).filter((s) => s.featured);
-}
-
 /** Project sebelumnya & sesudahnya, untuk navigasi prev/next di studi kasus. */
 export async function getProjectNeighbours(
   slug: string,
@@ -88,15 +58,6 @@ export async function getProjectNeighbours(
     prev: idx > 0 ? all[idx - 1] : undefined,
     next: idx < all.length - 1 ? all[idx + 1] : undefined,
   };
-}
-
-/**
- * Ringkasan untuk ditampilkan di homepage — sengaja sinkron supaya bisa
- * dipakai di Server Component tanpa menunggu.
- * Selalu dari seed lokal; kalau Supabase aktif, hapus cache ini dan jadikan async.
- */
-export function getProfileSync(): Profile {
-  return localProfile;
 }
 
 export * from "./types";

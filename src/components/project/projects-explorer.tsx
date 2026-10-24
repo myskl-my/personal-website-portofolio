@@ -37,22 +37,21 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   }, [projects, category, query]);
 
   const filters: Array<{ value: Category | "all"; label: string }> = [
-    { value: "all", label: "Semua" },
+    { value: "all", label: "All" },
     ...categories.map((c) => ({ value: c, label: categoryLabel[c] })),
   ];
 
   return (
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter kategori">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter kategori">
           {filters.map((f) => {
             const active = category === f.value;
             return (
               <button
                 key={f.value}
                 type="button"
-                role="tab"
-                aria-selected={active}
+                aria-pressed={active}
                 onClick={() => setCategory(f.value)}
                 className={cn(
                   "rounded-full border px-4 py-1.5 text-[13px] font-medium transition-all duration-300",
@@ -73,15 +72,15 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Cari project…"
-            aria-label="Cari project"
+            placeholder="Search projects…"
+            aria-label="Search projects"
             className="h-10 w-full rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] pr-9 pl-9 text-[14px] text-[var(--color-ink)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus-visible:border-[var(--color-primary)]"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
-              aria-label="Bersihkan pencarian"
+              aria-label="Clear search"
               className="absolute top-1/2 right-2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
             >
               <X className="h-4 w-4" />
@@ -93,8 +92,8 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       <p className="mt-5 text-[13px] text-[var(--color-muted)]">
         <span className="font-mono font-semibold text-[var(--color-ink)]">
           {filtered.length}
-        </span>{" "}
-        project ditemukan
+        </span>        {" "}
+        projects found
       </p>
 
       {filtered.length > 0 ? (
@@ -102,10 +101,10 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       ) : (
         <div className="surface mt-6 rounded-3xl px-6 py-20 text-center">
           <p className="text-[15px] font-medium text-[var(--color-ink)]">
-            Tidak ada project yang cocok.
+            No projects match.
           </p>
           <p className="mt-2 text-[14px] text-[var(--color-muted)]">
-            Coba ubah kata kunci atau pilih kategori lain.
+            Try a different keyword or pick another category.
           </p>
           <button
             type="button"
@@ -115,7 +114,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             }}
             className="mt-5 inline-flex min-h-[42px] items-center rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 text-[14px] font-medium text-[var(--color-ink)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
           >
-            Tampilkan semua
+            Show all
           </button>
         </div>
       )}

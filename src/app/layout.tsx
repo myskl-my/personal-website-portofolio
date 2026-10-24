@@ -58,10 +58,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f7f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0f11" },
-  ],
+  // Tema situs default gelap dan `enableSystem={false}`, jadi warna browser
+  // chrome cukup satu warna gelap — tidak diikuti prefers-color-scheme OS
+  // yang bisa bertabrakan dengan tema situs.
+  themeColor: "#0c0f11",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",

@@ -1,3 +1,5 @@
+"use client";
+
 import { Mail, MessageCircle } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
 import { site } from "@/lib/site";
@@ -16,11 +18,11 @@ export function Footer() {
               Contact
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-3xl">
-              Punya ide? Mari kita wujudkan.
+              Got an idea? Let&rsquo;s make it real.
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-muted)]">
-              Ceritakan projectmu lewat salah satu kanal di samping. Saya
-              biasanya membalas dalam waktu dekat.
+              Tell me about your project through one of the channels next to
+              this. I usually reply soon.
             </p>
           </div>
 

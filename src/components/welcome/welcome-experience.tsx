@@ -150,11 +150,20 @@ function WelcomeOverlay() {
     window.setTimeout(enterWelcome, reduce ? 0 : 140);
   }, [ready, reduce]);
 
+  // Escape = cara alternatif melewati intro (perilaku dialog yang diharapkan).
+  React.useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleEnter();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [handleEnter]);
+
   return (
     <motion.div
       role="dialog"
       aria-modal="true"
-      aria-label="Layar sambutan portofolio"
+      aria-label="Portfolio welcome screen"
       className="fixed inset-0 z-[100] overflow-hidden bg-[var(--color-bg)]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -266,7 +275,7 @@ function WelcomeOverlay() {
                   animate={reduce ? undefined : { opacity: [0.3, 1, 0.3], scale: [0.85, 1.1, 0.85] }}
                   transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                 />
-                Menyiapkan tampilan
+                  Getting things ready
               </motion.div>
             )}
           </AnimatePresence>

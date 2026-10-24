@@ -1,4 +1,4 @@
-import type { Project, Skill } from "./types";
+import type { Project } from "./types";
 
 /**
  * Stub untuk layer Supabase.
@@ -40,13 +40,6 @@ export function isSupabaseConfigured(): boolean {
  * supaya pergantian sumber data tidak mengubah komponen sama sekali.
  */
 export async function fetchProjectsFromSupabase(): Promise<Project[]> {
-  throw new Error(
-    "Supabase belum dikonfigurasi. Isi NEXT_PUBLIC_SUPABASE_URL dan " +
-      "NEXT_PUBLIC_SUPABASE_ANON_KEY, lalu implementasikan query di supabase.ts.",
-  );
-}
-
-export async function fetchSkillsFromSupabase(): Promise<Skill[]> {
   throw new Error(
     "Supabase belum dikonfigurasi. Isi NEXT_PUBLIC_SUPABASE_URL dan " +
       "NEXT_PUBLIC_SUPABASE_ANON_KEY, lalu implementasikan query di supabase.ts.",

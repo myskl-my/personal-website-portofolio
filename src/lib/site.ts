@@ -29,7 +29,7 @@ export const navLinks = [
   { id: "workflow", label: "Workflow" },
   { id: "capabilities", label: "Skills" },
   { id: "about", label: "About" },
-  { id: "kontak", label: "Kontak" },
+  { id: "kontak", label: "Contact" },
 ] as const;
 
 /**

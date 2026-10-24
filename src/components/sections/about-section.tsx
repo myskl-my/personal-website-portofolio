@@ -81,7 +81,7 @@ export function AboutSection() {
                 className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-full bg-[var(--color-primary)] px-5 text-[14px] font-semibold text-[var(--color-on-primary)] transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
               >
                 <MessageCircle className="h-4 w-4" />
-                Hubungi Saya
+                Contact Me
               </button>
               <a
                 href={site.github}

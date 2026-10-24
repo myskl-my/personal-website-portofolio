@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Kumpulan project Diki Candra. Klik salah satu untuk membaca studi kasus lengkapnya, mulai dari masalah sampai hasil akhir.",
-  alternates: { canonical: "/projects" },
+  alternates: { canonical: "/projects/" },
 };
 
 /**
@@ -29,7 +29,7 @@ export default async function ProjectsPage() {
         className="group inline-flex items-center gap-2 text-[13.5px] font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
       >
         <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
-        Kembali ke beranda
+        Back to home
       </Link>
 
       <SectionHeading
@@ -45,7 +45,7 @@ export default async function ProjectsPage() {
         ) : (
           <div className="surface rounded-3xl px-6 py-20 text-center">
             <p className="text-[15px] text-[var(--color-muted)]">
-              Belum ada project yang dipublikasikan.
+              No projects published yet.
             </p>
           </div>
         )}

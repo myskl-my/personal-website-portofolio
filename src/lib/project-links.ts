@@ -34,7 +34,7 @@ export function getProjectLinks(project: Project): ProjectLink[] {
 
   if (project.liveUrl) {
     links.push({
-      label: "Buka Live Site",
+      label: "Open Live Site",
       href: project.liveUrl,
       kind: "external",
       icon: "external",
@@ -43,7 +43,7 @@ export function getProjectLinks(project: Project): ProjectLink[] {
 
   if (project.videoUrl) {
     links.push({
-      label: "Tonton Demo",
+      label: "Watch Demo",
       href: project.videoUrl,
       kind: "external",
       icon: "play",

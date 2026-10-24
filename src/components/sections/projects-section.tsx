@@ -28,7 +28,7 @@ export async function ProjectsSection() {
             href="/projects"
             className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-2.5 text-[14px] font-semibold text-[var(--color-ink)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:shadow-[var(--shadow-card)]"
           >
-            Lihat Semua
+            View all
             <ArrowRight className="h-4 w-4 text-[var(--color-primary)] transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
@@ -38,7 +38,7 @@ export async function ProjectsSection() {
         ) : (
           <div className="surface mt-10 rounded-3xl px-6 py-16 text-center">
             <p className="text-[15px] text-[var(--color-muted)]">
-              Belum ada project unggulan yang dipublikasikan.
+              No featured projects published yet.
             </p>
           </div>
         )}

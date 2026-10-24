@@ -11,7 +11,7 @@
  */
 
 /** Platform tempat project bisa dijalankan — menentukan tombol mana yang muncul. */
-export type Platform = "Web" | "Android" | "Windows" | "Linux" | "macOS" | "Desktop";
+export type Platform = "Web" | "Android" | "Windows" | "Linux" | "macOS";
 
 /** Kategori project untuk filter. */
 export type Category =
@@ -23,14 +23,6 @@ export type Category =
 
 /** Status publikasi. Hanya `published` yang tampil di situs publik. */
 export type ProjectStatus = "draft" | "published" | "archived";
-
-export type SkillCategory =
-  | "language"
-  | "framework"
-  | "database"
-  | "tool"
-  | "infrastructure"
-  | "design";
 
 export interface ProjectLink {
   /** Label tombol, mis. "Buka Live Site", "Download APK". */
@@ -119,16 +111,6 @@ export interface Project {
   featured: boolean;
   status: ProjectStatus;
   /** Urutan tampil, kecil lebih dulu. */
-  order: number;
-}
-
-export interface Skill {
-  name: string;
-  category: SkillCategory;
-  /** 1–5, untuk bar progres. */
-  level: number;
-  years?: number;
-  featured: boolean;
   order: number;
 }
 

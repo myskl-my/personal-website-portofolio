@@ -77,10 +77,22 @@ type Options = {
   duration?: number;
 };
 
+/**
+ * Animasi scroll yang sedang berjalan (kalau ada).
+ *
+ * Dibatalkan otomatis saat `scrollToElement` dipanggil lagi — tanpa ini,
+ * klik tombol nav cepat-cepat membuat dua loop `requestAnimationFrame`
+ * saling menimpa `window.scrollTo` dan hasilnya bergetar.
+ */
+let activeCancel: (() => void) | null = null;
+
 export function scrollToElement(
   target: HTMLElement | Window,
   { offset = 0, duration = 900 }: Options = {},
 ): void {
+  // Punahkan animasi sebelumnya dulu supaya tidak bertarung dengan yang baru.
+  activeCancel?.();
+
   const isWindowTarget = target === window;
   const el = isWindowTarget ? null : (target as HTMLElement);
 
@@ -121,22 +133,26 @@ export function scrollToElement(
 
   // Kalau pengguna menyentuh scroll wheel / layar di tengah animasi,
   // serahkan kendali ke browser supaya tidak terasa "menarik" melawan niat.
+  // Cleanup dipanggil dari cancel() maupun dari step() saat selesai —
+  // idempoten, jadi aman dipanggil lebih dari sekali.
   let cancelled = false;
+  let cleaned = false;
   const cancel = () => {
+    if (cleaned) return;
+    cleaned = true;
     cancelled = true;
-  };
-  window.addEventListener("wheel", cancel, { passive: true });
-  window.addEventListener("touchstart", cancel, { passive: true });
-
-  const cleanup = () => {
     window.removeEventListener("wheel", cancel);
     window.removeEventListener("touchstart", cancel);
     unlockNativeSmoothScroll();
+    if (activeCancel === cancel) activeCancel = null;
   };
+  activeCancel = cancel;
+  window.addEventListener("wheel", cancel, { passive: true });
+  window.addEventListener("touchstart", cancel, { passive: true });
 
   const step = (now: number) => {
     if (cancelled) {
-      cleanup();
+      cancel();
       return;
     }
 
@@ -151,7 +167,7 @@ export function scrollToElement(
     } else {
       // Jaga agar posisi akhir benar-benar tepat (tidak meleset 1px).
       window.scrollTo(0, clamped);
-      cleanup();
+      cancel();
     }
   };
 

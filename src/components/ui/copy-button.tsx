@@ -54,7 +54,7 @@ export function CopyButton({ value, label, className, children }: Props) {
     <button
       type="button"
       onClick={copy}
-      aria-label={copied ? "Tersalin" : `Salin ${label ?? value}`}
+      aria-label={copied ? "Copied" : `Copy ${label ?? value}`}
       className={cn(
         "group relative inline-flex items-center gap-2 rounded-full",
         "transition-[box-shadow,transform,border-color] duration-300",
@@ -109,7 +109,7 @@ export function CopyButton({ value, label, className, children }: Props) {
             transition={spring.bounce}
             className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[var(--color-ink)] px-3 py-1 text-[11px] font-medium text-[var(--color-bg)] shadow-[var(--shadow-card)]"
           >
-            Tersalin!
+            Copied!
           </motion.span>
         )}
       </AnimatePresence>

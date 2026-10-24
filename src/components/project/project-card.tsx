@@ -79,8 +79,13 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           "hover:border-[var(--color-line-2)]",
         )}
       >
-        {/* cover: gambar kalau ada, gradient kalau belum */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-[var(--color-line)]">
+        {/* cover: gambar kalau ada, gradient kalau belum — seluruh area
+            adalah link ke halaman detail supaya klik cover tidak mati. */}
+        <Link
+          href={getDetailHref(project)}
+          className="relative block aspect-[16/9] w-full overflow-hidden border-b border-[var(--color-line)]"
+          aria-label={`${project.title} — view detail`}
+        >
           {project.coverImage ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -128,11 +133,11 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             className="pointer-events-none absolute inset-0 flex items-end justify-center bg-[var(--color-bg)]/55 opacity-0 backdrop-blur-[2px] transition-opacity duration-400 group-hover:opacity-100"
           >
             <span className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-[var(--color-surface)] px-4 py-2 text-[13px] font-semibold text-[var(--color-ink)] shadow-[var(--shadow-card)]">
-              Lihat Detail
+              View Detail
               <ArrowUpRight className="h-3.5 w-3.5" />
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* isi */}
         <div className="flex flex-1 flex-col p-4 sm:p-5">
@@ -195,7 +200,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
                 href={getDetailHref(project)}
                 className="inline-flex min-h-[34px] items-center gap-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-3 text-[12.5px] font-medium text-[var(--color-ink-2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)]"
               >
-                Lihat Detail
+                View Detail
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             )}

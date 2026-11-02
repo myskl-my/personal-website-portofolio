@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import { usePathname } from "next/navigation";
@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
  * Alur: begitu dipasang ia memutuskan sekali (per sesi) apakah intro harus
  * diputar. Jika ya, overlay muncul penuh, blob masuk, lalu beridle sambil
  * sesekali menunjuk tombol. Tombol baru aktif setelah font & dokumen siap dan
- * animasi masuk selesai. Klik → blob gembira, aksen teal mengembang, overlay
+ * animasi masuk selesai. Klik â†’ blob gembira, aksen teal mengembang, overlay
  * memudar, dan animasi masuk beranda (di `Hero`) mulai bersamaan.
  */
 
@@ -114,7 +114,7 @@ function WelcomeOverlay() {
     return () => window.clearTimeout(failsafe);
   }, [reduce]);
 
-  // Siklus ajakan: menunjuk → menatap pengunjung → rileks, lalu jeda.
+  // Siklus ajakan: menunjuk â†’ menatap pengunjung â†’ rileks, lalu jeda.
   // Saat reduced motion, gestur ajakan tetap ditampilkan secara statis (lihat
   // `basePose`) tanpa siklus.
   React.useEffect(() => {
@@ -182,7 +182,7 @@ function WelcomeOverlay() {
 
       <AmbientParticles />
 
-      {/* aksen teal yang mengembang saat masuk */}
+      {/* aksen yang mengembang saat masuk */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 rounded-full"
@@ -205,7 +205,7 @@ function WelcomeOverlay() {
           transition={{ ...spring.soft, delay: 0.15 }}
           className="text-center"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-muted)]">
+          <p className="text-[clamp(1.6rem,5vw,2.4rem)] font-bold tracking-[-0.02em] text-[var(--color-ink)]">
             {site.name}
           </p>
           <p className="mt-3 max-w-md text-balance text-[clamp(1.4rem,5vw,2.1rem)] leading-tight font-semibold tracking-[-0.02em] text-[var(--color-ink)]">
@@ -275,7 +275,7 @@ function WelcomeOverlay() {
                   animate={reduce ? undefined : { opacity: [0.3, 1, 0.3], scale: [0.85, 1.1, 0.85] }}
                   transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                 />
-                  Getting things ready
+                  Prepping the good stuff
               </motion.div>
             )}
           </AnimatePresence>
@@ -284,3 +284,7 @@ function WelcomeOverlay() {
     </motion.div>
   );
 }
+
+
+
+

@@ -1,19 +1,12 @@
 import type { Project } from "./types";
 import { projects as localProjects } from "./local";
-import {
-  fetchProjectsFromSupabase,
-  isSupabaseConfigured,
-} from "./supabase";
 
 /**
  * Entry point tunggal untuk membaca data.
  *
  * Semua komponen WAJIB mengimpor dari file ini, bukan langsung dari
- * `local.ts` atau `supabase.ts`. Dengan begitu perpindahan ke database
- * nanti cukup mengubah isi file ini — komponen tidak tersentuh sama sekali.
- *
- * Fallback otomatis: kalau Supabase belum dikonfigurasi, data diambil dari
- * seed lokal. Tidak ada error, tidak ada layar kosong.
+ * `local.ts`. Dengan begitu perubahan sumber data cukup mengubah isi file
+ * ini, komponen tidak tersentuh sama sekali.
  */
 
 /** Hanya `published` yang boleh tampil di halaman publik. */
@@ -22,13 +15,6 @@ function onlyPublished(list: Project[]): Project[] {
 }
 
 async function resolveProjects(): Promise<Project[]> {
-  if (isSupabaseConfigured()) {
-    try {
-      return onlyPublished(await fetchProjectsFromSupabase());
-    } catch (err) {
-      console.warn("[data] Supabase gagal, memakai seed lokal.", err);
-    }
-  }
   return onlyPublished(localProjects);
 }
 

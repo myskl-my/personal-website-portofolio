@@ -4,7 +4,7 @@ import type { Project, ProjectLink } from "./data/types";
  * Menentukan tombol mana yang harus muncul untuk sebuah project.
  *
  * Prinsipnya: JANGAN pakai enum atau flag untuk menentukan tampilan. Baca saja
- * data yang ada — platform apa saja yang dipakai, dan tautan mana yang terisi.
+ * data yang ada, platform apa saja yang dipakai, dan tautan mana yang terisi.
  * Dengan begitu menambah satu project baru cukup mengisi field, tidak perlu
  * menyentuh kode.
  *

@@ -1,17 +1,17 @@
-export const site = {
+﻿export const site = {
   name: "Diki Candra",
   shortName: "DC",
-  role: "AI-Assisted Full-Stack Developer",
-  tagline: "Where Ideas Become Reality.",
-  headline: "Building Digital Products With AI",
+  role: "AI-Powered Full-Stack Developer",
+  tagline: "I build your dreams",
+  headline: "I Build Your Dreams",
   description:
-    "Portofolio Diki Candra, AI-Assisted Full-Stack Developer. Saya merancang, membangun, menguji, dan merilis produk digital dengan alur kerja yang diperkuat AI, dari ide sampai bisa dipakai.",
+    "Portfolio of Diki Candra, a full-stack developer. I design, build, test, and ship digital products, from raw idea to production-ready.",
   email: "dikicandra121204@gmail.com",
   github: "https://github.com/myskl-my",
   githubHandle: "myskl-my",
   whatsapp: "+62 813-1343-9307",
   whatsappLink: "https://wa.me/6281313439307",
-  domain: "socialbooster.my.id",
+  domain: "dikicandra.pages.dev",
 } as const;
 
 /**
@@ -29,7 +29,7 @@ export const navLinks = [
   { id: "workflow", label: "Workflow" },
   { id: "capabilities", label: "Skills" },
   { id: "about", label: "About" },
-  { id: "kontak", label: "Contact" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
 /**
@@ -44,5 +44,7 @@ export const sectionIds = [
   "workflow",
   "capabilities",
   "about",
-  "kontak",
+  "contact",
 ] as const;
+
+

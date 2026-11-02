@@ -42,7 +42,7 @@ export function Navbar() {
     };
   }, [open]);
 
-  // Escape menutup sheet mobile — perilaku dialog yang diharapkan keyboard user.
+  // Escape menutup sheet mobile, perilaku dialog yang diharapkan keyboard user.
   React.useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -69,8 +69,8 @@ export function Navbar() {
     [scrollTo, onHome, router],
   );
 
-  // Di halaman non-home hanya `#kontak` (footer) yang ada di DOM, jadi
-  // scroll-spy akan selalu menyimpulkan "Contact" aktif — itu menyesatkan.
+  // Di halaman non-home hanya `#contact` (footer) yang ada di DOM, jadi
+  // scroll-spy akan selalu menyimpulkan "Contact" aktif, itu menyesatkan.
   // Indikator tab hanya dihitung di beranda tempat seluruh section ada.
   const isActive = (id: string) => onHome && activeId === id;
 
@@ -102,7 +102,7 @@ export function Navbar() {
             type="button"
             onClick={() => handleNav("top")}
             className="group relative flex items-center gap-2.5"
-            aria-label={`${site.name} — back to top`}
+            aria-label={`Back to top of ${site.name}`}
           >
             <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] shadow-[var(--shadow-card)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[var(--shadow-card-hover)]">
               <span className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-soft)] to-[var(--color-accent-soft)] opacity-80" />

@@ -5,7 +5,7 @@ import * as React from "react";
 /**
  * State layar sambutan (welcome experience).
  *
- *   pending  : belum diputuskan (server & render pertama klien) — overlay
+ *   pending  : belum diputuskan (server & render pertama klien), overlay
  *              tidak dirender, animasi masuk beranda belum boleh jalan.
  *   playing  : layar sambutan sedang tampil, menunggu klik pengunjung.
  *   entering : pengunjung sudah menekan tombol; overlay mulai keluar dan
@@ -23,7 +23,7 @@ import * as React from "react";
 
 export type WelcomeStatus = "pending" | "playing" | "entering" | "done";
 
-/** Kunci sessionStorage — layar sambutan paling banyak sekali per sesi. */
+/** Kunci sessionStorage, layar sambutan paling banyak sekali per sesi. */
 const STORAGE_KEY = "dc:welcome:v1";
 
 let status: WelcomeStatus = "pending";
@@ -59,7 +59,7 @@ export function initWelcome(pathname: string): void {
   if (typeof window === "undefined") return;
 
   // Hanya di beranda. Halaman lain (mis. /projects) langsung dianggap selesai.
-  // Kalau ada hash (mis. `/#kontak` dari link "Hubungi saya"), intro dilewati
+  // Kalau ada hash (mis. `/#contact` dari link "Contact Me"), intro dilewati
   // supaya browser bisa langsung menggulir ke target tanpa ditahan overlay.
   const hasHash = typeof window !== "undefined" && window.location.hash.length > 1;
   const eligible = pathname === "/" && !hasHash;

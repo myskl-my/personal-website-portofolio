@@ -6,14 +6,14 @@ import { AboutSection } from "@/components/sections/about-section";
 import { RegisterSection } from "@/components/providers/register-section";
 
 /**
- * Halaman utama — satu halaman utuh dengan navigasi scroll.
+ * Halaman utama, satu halaman utuh dengan navigasi scroll.
  *
  *   #top          : hero, paling atas
  *   #projects     : featured projects
- *   #workflow     : alur kerja AI
+ *   #workflow     : alur kerja development
  *   #capabilities : kemampuan teknis
  *   #about        : tentang saya
- *   #kontak       : footer, dirender di layout
+ *   #contact      : footer, dirender di layout
  *
  * PENTING: tiap section dibungkus `RegisterSection` sendiri, tidak boleh
  * digabung. Kalau dua section berbagi satu wrapper, elemen yang dipantau jadi

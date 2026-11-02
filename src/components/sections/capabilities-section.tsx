@@ -3,11 +3,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Layout,
+  Smartphone,
+  Layers,
+  Palette,
   Server,
-  Database,
   CloudUpload,
-  GitBranch,
-  ShieldCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -21,46 +21,45 @@ type Capability = {
 };
 
 /**
- * Kemampuan teknis ditampilkan sebagai bidang kerja, bukan daftar nama
- * teknologi dengan angka kecakapan. Tujuannya menghindari klaim yang belum
- * diverifikasi, sekaligus tetap memberi gambaran cara saya bekerja.
+ * Keahlian ditampilkan sebagai bidang kerja beserta stack utama,
+ * bukan daftar nama teknologi dengan angka kecakapan.
  */
 const CAPABILITIES: Capability[] = [
   {
     icon: Layout,
-    title: "Frontend & UI",
+    title: "Web Development",
     description:
-      "Membangun antarmuka responsif yang rapi dan aksesibel, dari layar handphone sampai desktop.",
+      "React, Next.js, TypeScript, and Tailwind CSS: modern web apps built to last.",
+  },
+  {
+    icon: Smartphone,
+    title: "Android Development",
+    description:
+      "Native Android apps end to end, from architecture to release.",
+  },
+  {
+    icon: Layers,
+    title: "Multi-Platform development with Flutter",
+    description:
+      "Cross-platform mobile from one codebase: fast, consistent, production-ready.",
+  },
+  {
+    icon: Palette,
+    title: "UI Engineering",
+    description:
+      "Crafting fast, responsive, accessible interfaces that feel right on any screen.",
   },
   {
     icon: Server,
-    title: "Backend & API",
+    title: "APIs & Backend",
     description:
-      "Menyusun logika server, alur data, dan integrasi layanan supaya aplikasi berjalan konsisten.",
-  },
-  {
-    icon: Database,
-    title: "Database & Data",
-    description:
-      "Merancang struktur data yang jelas dan mudah dikembangkan seiring bertambahnya kebutuhan.",
+      "Designing solid server logic, data flows, and integrations that keep apps running without drama.",
   },
   {
     icon: CloudUpload,
-    title: "Deployment & Hosting",
+    title: "Deployment",
     description:
-      "Merilis situs maupun aplikasi ke hosting modern, lalu memastikan hasilnya cepat dan stabil.",
-  },
-  {
-    icon: GitBranch,
-    title: "Tooling & Otomasi",
-    description:
-      "Merapikan alur kerja dengan kontrol versi, skrip build, dan otomatisasi langkah rilis.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Testing & QA",
-    description:
-      "Menguji alur utama dan menelusuri error sebelum rilis, supaya yang dipakai benar-benar berfungsi.",
+      "Cloudflare Pages and release workflows: ship fast, keep production stable.",
   },
 ];
 
@@ -71,9 +70,8 @@ export function CapabilitiesSection() {
     <RegisterSection id="capabilities">
       <section className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <SectionHeading
-          eyebrow="Technical Capabilities"
-          title="Yang bisa saya kerjakan."
-          description="Kemampuan yang saya pakai sehari-hari untuk mengubah ide menjadi produk yang bisa dipakai."
+          eyebrow="Skills & Experience"
+          description="Web, mobile, and the stack behind them, focused on products that ship."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

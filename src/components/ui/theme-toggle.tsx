@@ -7,7 +7,7 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { spring } from "@/lib/motion";
 
-/** Subscribe kosong — dipakai useSyncExternalStore untuk deteksi mount. */
+/** Subscribe kosong, dipakai useSyncExternalStore untuk deteksi mount. */
 const emptySubscribe = () => () => {};
 
 export function ThemeToggle({ className }: { className?: string }) {

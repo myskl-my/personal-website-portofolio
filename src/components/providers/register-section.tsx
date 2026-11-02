@@ -7,7 +7,7 @@ import { useScrollSpy } from "@/components/providers/scroll-spy";
  * Membungkus sebuah section lalu mendaftarkan elemennya ke ScrollSpy
  * supaya navbar tahu section mana yang sedang terlihat.
  *
- * `id` dipasang langsung pada elemen wrapper — bukan pada elemen di dalam.
+ * `id` dipasang langsung pada elemen wrapper, bukan pada elemen di dalam.
  * ScrollSpy mengukur posisi wrapper terhadap viewport, jadi wrapper WAJIB
  * punya id; tanpa itu section tak bisa dilacak dan tab aktif tak berganti.
  */

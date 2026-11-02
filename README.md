@@ -39,7 +39,7 @@ src/
   app/            # route, layout, metadata, globals.css
   components/     # UI: layout, sections, project, providers, welcome, ui
   lib/
-    data/         # sumber konten (types, local seed, supabase stub, index)
+    data/         # sumber konten (types, local seed, index)
     project-links.ts
     motion.ts
     smooth-scroll.ts
@@ -48,10 +48,9 @@ scripts/deploy.mjs  # wrapper deploy ke Cloudflare Pages
 
 ## Konten
 
-Seluruh konten project & profil dibaca lewat `src/lib/data/index.ts`. Secara
-default data berasal dari seed statis di `src/lib/data/local.ts` — edit file itu
-untuk menambah/mengubah project. Ada juga stub Supabase
-(`src/lib/data/supabase.ts`) yang belum aktif.
+Seluruh konten project & profil dibaca lewat `src/lib/data/index.ts`. Data
+berasal dari seed statis di `src/lib/data/local.ts` — edit file itu
+untuk menambah/mengubah project.
 
 ## Deploy
 

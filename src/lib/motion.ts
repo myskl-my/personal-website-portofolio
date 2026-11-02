@@ -1,7 +1,7 @@
 import type { Transition } from "framer-motion";
 
 /**
- * Token gerak — 3 spring konsisten dipakai di seluruh aplikasi.
+ * Token gerak, 3 spring konsisten dipakai di seluruh aplikasi.
  * snap  : tekan tombol, toggle
  * soft  : hover, muncul/hilang
  * bounce: sukses, konfirmasi

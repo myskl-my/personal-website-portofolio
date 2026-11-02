@@ -1,16 +1,13 @@
 /**
  * Tipe data tunggal untuk seluruh situs.
  *
- * Kontrak ini dipakai bersama oleh dua sumber data:
- *   - `local.ts`    : seed statis yang dibundel ke build (default, selalu jalan)
- *   - `supabase.ts` : query Postgres, dipakai otomatis kalau kredensial tersedia
- *
- * Karena keduanya harus mengembalikan bentuk yang sama, seluruh field yang
- * dipakai komponen UI dideklarasikan di sini. Kalau nanti ada kolom database
- * baru, tambahkan di sini lebih dulu sebelum dipakai di komponen.
+ * Seluruh field yang dipakai komponen UI dideklarasikan di sini.
+ * Sumber data ada di `local.ts` (seed statis yang dibundel ke build).
+ * Kalau nanti ada kolom/sumber data baru, tambahkan di sini lebih dulu
+ * sebelum dipakai di komponen.
  */
 
-/** Platform tempat project bisa dijalankan — menentukan tombol mana yang muncul. */
+/** Platform tempat project bisa dijalankan, menentukan tombol mana yang muncul. */
 export type Platform = "Web" | "Android" | "Windows" | "Linux" | "macOS";
 
 /** Kategori project untuk filter. */
@@ -55,7 +52,7 @@ export interface ProjectCaseStudy {
   solution?: string;
   /** Daftar fitur utama. */
   features?: string[];
-  /** Langkah alur kerja berbantuan AI yang dipakai di project ini. */
+  /** Langkah alur kerja development yang dipakai di project ini. */
   aiWorkflow?: string[];
   /** Tantangan teknis yang dihadapi dan bagaimana diselesaikan. */
   challenges?: string[];
@@ -65,7 +62,7 @@ export interface ProjectCaseStudy {
  * Satu project di portofolio.
  *
  * Catatan soal tautan: field tautan sengaja nullable dan bebas. UI membaca
- * mana saja yang terisi lalu menampilkan tombolnya — bukan lewat enum.
+ * mana saja yang terisi lalu menampilkan tombolnya, bukan lewat enum.
  * Contoh: satu project bisa punya `liveUrl` (web) sekaligus `downloadUrl`
  * (APK) sekaligus `videoUrl` (demo), dan keempat tombol itu muncul bersamaan.
  */
@@ -84,10 +81,10 @@ export interface Project {
 
   /** Penulis project ini, mis. "Backend, Android, DevOps". */
   role: string;
-  /** Contoh: "2025 — 2026" atau "2026 — sekarang". */
+  /** Contoh: "2025, 2026" atau "2026, sekarang". */
   timeline: string;
 
-  /** Platform project — dipakai untuk badge dan label tombol download.
+  /** Platform project, dipakai untuk badge dan label tombol download.
    * Lihat `lib/project-links.ts`. */
   platforms: Platform[];
   category: Category;
@@ -98,7 +95,7 @@ export interface Project {
   /** Poin-poin pencapaian, tampil sebagai daftar bullet. */
   highlights: string[];
 
-  /** Tautan — semua opsional, tidak semuanya perlu diisi. */
+  /** Tautan, semua opsional, tidak semuanya perlu diisi. */
   liveUrl?: string;
   downloadUrl?: string;
   repoUrl?: string;

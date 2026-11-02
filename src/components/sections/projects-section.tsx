@@ -21,24 +21,27 @@ export async function ProjectsSection() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             eyebrow="Featured Projects"
-            title="Karya yang saya bangun."
-            description="Beberapa project pilihan yang menunjukkan cara saya bekerja. Tiap project punya halaman sendiri berisi studi kasus lengkapnya."
+            description="A selection of work across web and mobile. Every project gets its own page with a clear write-up from first commit to launch."
           />
-          <Link
-            href="/projects"
-            className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-2.5 text-[14px] font-semibold text-[var(--color-ink)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:shadow-[var(--shadow-card)]"
-          >
-            View all
-            <ArrowRight className="h-4 w-4 text-[var(--color-primary)] transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
         </div>
 
         {featured.length > 0 ? (
-          <ProjectGrid projects={featured} className="mt-10" />
+          <>
+            <ProjectGrid projects={featured} className="mt-10" />
+            <div className="mt-10 flex justify-center">
+              <Link
+                href="/projects"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-2.5 text-[14px] font-semibold text-[var(--color-ink)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:shadow-[var(--shadow-card)]"
+              >
+                View all
+                <ArrowRight className="h-4 w-4 text-[var(--color-primary)] transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </>
         ) : (
           <div className="surface mt-10 rounded-3xl px-6 py-16 text-center">
             <p className="text-[15px] text-[var(--color-muted)]">
-              No featured projects published yet.
+              Nothing pinned here yet. New work is on the way.
             </p>
           </div>
         )}

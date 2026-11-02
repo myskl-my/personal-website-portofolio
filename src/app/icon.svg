@@ -1,34 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="DC">
   <defs>
     <linearGradient id="dc-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#5eead4" />
-      <stop offset="0.55" stop-color="#2dd4bf" />
-      <stop offset="1" stop-color="#0d9488" />
-    </linearGradient>
-    <linearGradient id="dc-sheen" x1="0" y1="0" x2="0" y2="16" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.3" />
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="0" stop-color="#2a2118" />
+      <stop offset="1" stop-color="#1a1512" />
     </linearGradient>
   </defs>
 
-  <rect width="32" height="32" rx="8.5" fill="url(#dc-bg)" />
-  <rect width="32" height="16" rx="8.5" fill="url(#dc-sheen)" />
+  <!-- Tile mengikuti desain logo di navbar: kotak cokelat gelap,
+       gradient hangat, border tipis, monogram DC mono bold. -->
+  <rect width="32" height="32" rx="10.5" fill="#221c18" />
+  <rect width="32" height="32" rx="10.5" fill="url(#dc-bg)" opacity="0.8" />
+  <rect x="0.5" y="0.5" width="31" height="31" rx="10" fill="none" stroke="#3a322b" stroke-width="1" />
 
-  <!-- Monogram DC digambar sebagai path (bukan <text>) supaya tampilan
-       konsisten di semua browser dan tidak bergantung font yang tersedia.
-       Warna monogram memakai charcoal agar kontras di atas turquoise. -->
-  <g fill="#04211d">
-    <!-- D -->
-    <path d="M7.4 9.2h4.1c3 0 4.95 1.86 4.95 4.8s-1.95 4.8-4.95 4.8H7.4V9.2Zm3.65 2.8v4h.35c1.26 0 1.98-.8 1.98-2s-.72-2-1.98-2h-.35Z" />
+  <!-- Monogram DC: kedua huruf digambar sebagai path bertepi bulat dengan
+       ketebalan garis sama dan tinggi sama supaya simetris dan konsisten,
+       tanpa bergantung font yang tersedia di browser. -->
+  <g fill="none" stroke="#e8c9a0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- D: stem kiri + busur bowl kanan -->
+    <path d="M7.5 20.8 V11.2 H9.1 a4.8 4.8 0 0 1 0 9.6 H7.5" />
+    <!-- C: busur terbuka ke kanan, r sama dengan tinggi D -->
+    <path d="M24.59 11.68 a4.8 4.8 0 1 0 0 8.64" />
   </g>
-
-  <!-- C digambar sebagai busur dengan ujung membulat supaya terminalnya
-       bersih di ukuran besar maupun di favicon 16px. -->
-  <path
-    d="M23.2 12.4a4 4 0 1 0 0 7.2"
-    fill="none"
-    stroke="#04211d"
-    stroke-width="3.1"
-    stroke-linecap="round"
-  />
 </svg>

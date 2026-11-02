@@ -1,28 +1,29 @@
-"use client";
+﻿"use client";
 
 import { Mail, MessageCircle } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
 import { site } from "@/lib/site";
 import { CopyButton } from "@/components/ui/copy-button";
 import { ScrollTopButton } from "@/components/ui/scroll-top-button";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
   const year = new Date().getFullYear();
+  if (pathname?.startsWith("/projects")) {
+    return null;
+  }
 
   return (
     <footer className="relative mt-24 border-t border-[var(--color-line)] bg-[var(--color-bg-2)]">
       <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <p className="text-[12.5px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+            <p className="text-[clamp(1.35rem,3.5vw,2rem)] font-bold uppercase tracking-[0.12em] text-[var(--color-primary)]">
               Contact
             </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-3xl">
-              Got an idea? Let&rsquo;s make it real.
-            </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-[var(--color-muted)]">
-              Tell me about your project through one of the channels next to
-              this. I usually reply soon.
+              Hit me up on any channel next to this. I usually reply fast.
             </p>
           </div>
 
@@ -101,3 +102,5 @@ export function Footer() {
     </footer>
   );
 }
+
+

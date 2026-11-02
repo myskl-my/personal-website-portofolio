@@ -8,7 +8,7 @@ import * as React from "react";
  * Situs ini satu halaman utuh:
  *   #top      : hero, paling atas
  *   #projects : grid project, di tengah
- *   #kontak   : footer, paling bawah
+ *   #contact  : footer, paling bawah
  *
  * Navbar tidak pernah berpindah halaman. Tombolnya hanya memanggil
  * `useScrollToSection()` yang di sini, hasilnya menggulir halus seperti
@@ -17,7 +17,7 @@ import * as React from "react";
  * Kenapa tidak pakai `scrollTo({ behavior: "smooth" })` bawaan browser?
  *   1. Durasi smooth scroll native mengikuti jarak dan tidak bisa dikontrol.
  *      Untuk jarak pendek seperti di situs ini, hasilnya sering terasa
- *      "tiba-tiba" — atau kalau jaraknya jauh, malah terlalu lambat.
+ *      "tiba-tiba", atau kalau jaraknya jauh, malah terlalu lambat.
  *   2. `scroll-behavior: smooth` di CSS akan membuat setiap langkah manual
  *      di bawah memicu ulang animasi native, sehingga keduanya bertabrakan.
  *      Karena itu aturan CSS itu sengaja dihapus dari globals.css, dan
@@ -25,11 +25,11 @@ import * as React from "react";
  *
  * Menghormati `prefers-reduced-motion`: semua animasi dekoratif yang berulang
  * dimatikan lewat CSS, dan scroll navigasi memakai durasi sangat singkat
- * (260ms) alih-alih lompat instan — supaya tetap terasa mengalir tanpa
+ * (260ms) alih-alih lompat instan, supaya tetap terasa mengalir tanpa
  * gerakan panjang yang mengganggu.
  *
  * Catatan URL: scroll ini SENGAJA tidak menulis `#top` / `#projects` /
- * `#kontak` ke address bar. Situsnya satu halaman, jadi URL harus tetap
+ * `#contact` ke address bar. Situsnya satu halaman, jadi URL harus tetap
  * bersih di domain root saja.
  */
 
@@ -80,7 +80,7 @@ type Options = {
 /**
  * Animasi scroll yang sedang berjalan (kalau ada).
  *
- * Dibatalkan otomatis saat `scrollToElement` dipanggil lagi — tanpa ini,
+ * Dibatalkan otomatis saat `scrollToElement` dipanggil lagi, tanpa ini,
  * klik tombol nav cepat-cepat membuat dua loop `requestAnimationFrame`
  * saling menimpa `window.scrollTo` dan hasilnya bergetar.
  */
@@ -122,7 +122,7 @@ export function scrollToElement(
   // Untuk scroll navigasi, lompat instan justru terasa lebih buruk daripada
   // scroll singkat: pengguna mengira tombolnya tidak merespons, atau isi
   // halaman bergeser tanpa konteks. Jadi di sini dipakai animasi yang sangat
-  // singkat (~260ms) — cukup untuk terasa "mengalir", tanpa gerakan lama
+  // singkat (~260ms), cukup untuk terasa "mengalir", tanpa gerakan lama
   // yang bisa mengganggu kenyamanan.
   const reduced = prefersReducedMotion();
   const effectiveDuration = reduced ? Math.min(duration, 260) : duration;
@@ -133,7 +133,7 @@ export function scrollToElement(
 
   // Kalau pengguna menyentuh scroll wheel / layar di tengah animasi,
   // serahkan kendali ke browser supaya tidak terasa "menarik" melawan niat.
-  // Cleanup dipanggil dari cancel() maupun dari step() saat selesai —
+  // Cleanup dipanggil dari cancel() maupun dari step() saat selesai -
   // idempoten, jadi aman dipanggil lebih dari sekali.
   let cancelled = false;
   let cleaned = false;

@@ -40,9 +40,6 @@ yarn-error.log*
 # cloudflare
 .wrangler/
 
-# firebase
-.firebase/
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts

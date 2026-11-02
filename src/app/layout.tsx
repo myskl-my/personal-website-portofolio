@@ -24,34 +24,34 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
   title: {
-    default: `${site.name} — Portfolio`,
-    template: `%s — ${site.name}`,
+    default: `${site.name} | Portfolio`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords: [
     "Diki Candra",
     "portfolio",
-    "AI-Assisted Developer",
     "Full-Stack Developer",
-    "AI-driven development",
-    "vibe coding",
-    "web developer",
+    "Web Developer",
+    "Android Developer",
+    "Flutter",
     "Next.js",
-    "TypeScript",
     "React",
+    "TypeScript",
+    "Tailwind CSS",
   ],
   authors: [{ name: site.name }],
   openGraph: {
     type: "website",
-    locale: "id_ID",
+    locale: "en_US",
     url: `https://${site.domain}`,
-    siteName: `${site.name} — Portfolio`,
-    title: `${site.name} — Portfolio`,
+    siteName: `${site.name} | Portfolio`,
+    title: `${site.name} | Portfolio`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Portfolio`,
+    title: `${site.name} | Portfolio`,
     description: site.description,
   },
   robots: { index: true, follow: true },
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   // Tema situs default gelap dan `enableSystem={false}`, jadi warna browser
-  // chrome cukup satu warna gelap — tidak diikuti prefers-color-scheme OS
+  // chrome cukup satu warna gelap, tidak diikuti prefers-color-scheme OS
   // yang bisa bertabrakan dengan tema situs.
-  themeColor: "#0c0f11",
+  themeColor: "#1a1512",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -70,7 +70,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="id"
+      lang="en"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
@@ -87,7 +87,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <ScrollSpyProvider sections={[...sectionIds]}>
               <Navbar />
               <main className="flex-1">{children}</main>
-              <RegisterSection id="kontak">
+              <RegisterSection id="contact">
                 <Footer />
               </RegisterSection>
             </ScrollSpyProvider>

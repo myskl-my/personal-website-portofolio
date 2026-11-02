@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Compass, Sparkles, Code2, Bug, FlaskConical, Rocket } from "lucide-react";
+import { Compass, Layers, Code2, Search, FlaskConical, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { RegisterSection } from "@/components/providers/register-section";
@@ -16,39 +16,39 @@ type Step = {
 const STEPS: Step[] = [
   {
     icon: Compass,
-    title: "Plan",
+    title: "Discover",
     description:
-      "Memahami masalah, menyusun kebutuhan, lalu memecah pekerjaan jadi langkah kecil yang bisa diuji.",
+      "Clarify requirements, users, and constraints before writing code.",
   },
   {
-    icon: Sparkles,
-    title: "Prompt & Prototype",
+    icon: Layers,
+    title: "Architect",
     description:
-      "Menyusun arahan untuk AI, lalu menyiapkan draf awal struktur data dan antarmuka.",
+      "Design the data model, API surface, and UI structure up front.",
   },
   {
     icon: Code2,
-    title: "Build",
+    title: "Develop",
     description:
-      "Menulis kode bertahap, meninjau tiap perubahan, dan menjaga struktur tetap mudah dibaca.",
+      "Implement features in clean, reviewable increments with a structure that stays easy to read.",
   },
   {
-    icon: Bug,
-    title: "Debug",
+    icon: Search,
+    title: "Review",
     description:
-      "Menelusuri error bersama AI sampai akar masalahnya jelas, bukan sekadar menempel tambalan.",
+      "Refactor for clarity, consistency, and maintainability. Root causes, not band-aids.",
   },
   {
     icon: FlaskConical,
     title: "Test",
     description:
-      "Menguji alur utama di berbagai ukuran layar dan skenario sebelum dirilis.",
+      "Cover core flows across screen sizes and real scenarios before anything goes live.",
   },
   {
     icon: Rocket,
-    title: "Deploy",
+    title: "Ship",
     description:
-      "Merilis ke hosting, memeriksa hasilnya langsung, lalu memperbaiki bila masih ada yang kurang.",
+      "Deploy to production, verify in the wild, then polish whatever still feels off.",
   },
 ];
 
@@ -60,9 +60,8 @@ export function WorkflowSection() {
       <section className="relative border-y border-[var(--color-line)] bg-[var(--color-bg-2)]">
         <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <SectionHeading
-            eyebrow="AI Development Workflow"
-            title="AI jadi metode kerja, bukan pengganti proses."
-            description="Setiap project saya kerjakan dengan alur yang sama: mulai dari memahami masalah sampai memastikan hasilnya benar-benar berjalan."
+            eyebrow="Development Workflow"
+            description="Same playbook every time: understand the problem, build in slices, and ship something that actually works."
           />
 
           <ol className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

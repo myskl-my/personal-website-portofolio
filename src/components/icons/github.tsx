@@ -2,7 +2,7 @@ import * as React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-/** GitHub octocat mark — lucide-react tidak lagi menyediakan brand icon. */
+/** GitHub octocat mark, lucide-react tidak lagi menyediakan brand icon. */
 export function GithubIcon({ className, ...props }: Props) {
   return (
     <svg

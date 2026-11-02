@@ -5,7 +5,7 @@ import * as React from "react";
 /**
  * Melacak section mana yang sedang terlihat (scroll spy).
  *
- * Kenapa tidak pakai `usePathname`? Halaman ini satu halaman penuh —
+ * Kenapa tidak pakai `usePathname`? Halaman ini satu halaman penuh -
  * menggulir tidak mengubah route, sehingga `pathname` selalu sama dan tab
  * aktif tidak pernah ikut berubah. Sumber kebenaran yang tepat adalah posisi
  * scroll. Cara kerjanya dijelaskan di efek `compute` di bawah.
@@ -37,7 +37,7 @@ export function ScrollSpyProvider({
   const [nodes, setNodes] = React.useState<Record<string, HTMLElement>>({});
 
   // Disimpan per id di state (bukan ref) supaya Provider ikut re-render
-  // saat section baru muncul — Observer baru lalu dipasang ulang.
+  // saat section baru muncul, Observer baru lalu dipasang ulang.
   const register = React.useCallback((id: string, el: HTMLElement | null) => {
     setNodes((prev) => {
       if (el) {
@@ -65,7 +65,7 @@ export function ScrollSpyProvider({
    *
    * Kenapa tidak IntersectionObserver?
    *   Observer membandingkan "seberapa banyak tiap section terlihat" dengan
-   *   `rootMargin` tipis (±45%). Section yang sangat tinggi — seperti hero —
+   *   `rootMargin` tipis (±45%). Section yang sangat tinggi, seperti hero -
    *   tetap dianggap aktif sangat lama setelah section berikutnya mulai
    *   terlihat, sehingga indikator navbar terlambat berpindah.
    *

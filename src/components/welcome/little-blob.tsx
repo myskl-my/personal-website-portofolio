@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { spring } from "@/lib/motion";
 
 /**
- * "Little Blob" — karakter maskot orisinal untuk layar sambutan.
+ * "Little Blob", karakter maskot orisinal untuk layar sambutan.
  *
  * Digambar sepenuhnya dengan SVG sehingga ringan, tajam di segala ukuran, dan
  * mudah dianimasikan tanpa aset eksternal. Warna memakai variabel tema
@@ -56,7 +56,7 @@ export function LittleBlob({
   const reduce = useReducedMotion();
   const target = POSE[pose];
 
-  // Mengambang + napas halus (squash & stretch tipis) — dimatikan saat
+  // Mengambang + napas halus (squash & stretch tipis), dimatikan saat
   // prefers-reduced-motion.
   const floatAnimate = reduce
     ? undefined
@@ -115,7 +115,7 @@ export function LittleBlob({
           <path d={BODY} fill="url(#blob-body)" />
           <path d={BODY} fill="url(#blob-gloss)" />
 
-          {/* pipi teal samar */}
+          {/* pipi samar */}
           <ellipse cx="70" cy="144" rx="11" ry="6.5" fill="var(--blob-accent)" opacity="0.16" />
           <ellipse cx="150" cy="144" rx="11" ry="6.5" fill="var(--blob-accent)" opacity="0.16" />
 
@@ -123,7 +123,7 @@ export function LittleBlob({
           <ellipse cx="90" cy="186" rx="13" ry="8" fill="var(--blob-body-2)" />
           <ellipse cx="130" cy="186" rx="13" ry="8" fill="var(--blob-body-2)" />
 
-          {/* mata — bergerak mengikuti arah pandang, berkedip sendiri */}
+          {/* mata, bergerak mengikuti arah pandang, berkedip sendiri */}
           <motion.g
             animate={{ x: target.gazeX, y: target.gazeY }}
             transition={spring.soft}

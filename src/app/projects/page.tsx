@@ -8,7 +8,7 @@ import { ProjectsExplorer } from "@/components/project/projects-explorer";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Kumpulan project Diki Candra. Klik salah satu untuk membaca studi kasus lengkapnya, mulai dari masalah sampai hasil akhir.",
+    "Projects by Diki Candra. Pick any one and dig into the full case study, from the problem to what actually shipped.",
   alternates: { canonical: "/projects/" },
 };
 
@@ -35,8 +35,7 @@ export default async function ProjectsPage() {
       <SectionHeading
         className="mt-6"
         eyebrow="Projects"
-        title="Semua yang pernah saya bangun."
-        description="Setiap project punya halaman sendiri berisi studi kasus lengkap, dari masalah yang diangkat sampai hasil akhirnya."
+        description="Every project gets its own page with a complete case study: the problem, the process, and what came out the other side."
       />
 
       <div className="mt-10">
@@ -45,7 +44,7 @@ export default async function ProjectsPage() {
         ) : (
           <div className="surface rounded-3xl px-6 py-20 text-center">
             <p className="text-[15px] text-[var(--color-muted)]">
-              No projects published yet.
+              No projects here yet. Check back soon.
             </p>
           </div>
         )}

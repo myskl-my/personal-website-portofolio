@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
-/* Charcoal & Turquoise — design tokens.
-   Karakter: dark modern, minimalis, tenang. Satu aksen turquoise dipakai
-   hemat; warna pendukung (cyan, jade, amber) hanya muncul di badge platform
-   dan detail kecil. Mode terang memakai turquoise yang digelapkan agar
-   kontras tetap lolos WCAG AA. */
+/* Warm Cream, design tokens.
+   Karakter: hangat, lembut, elegan. Krem sebagai dasar, cokelat tua untuk
+   teks dan aksen, karamel untuk detail. Mode gelap memakai espresso hangat
+   dengan aksen krem terang. */
 
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -20,80 +19,80 @@
   /* motion */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* ---- warna: mode terang ---- */
-  --color-bg: #f4f7f8;
-  --color-bg-2: #eaf0f1;
-  --color-surface: #ffffff;
-  --color-surface-2: #f1f6f7;
+  /* ---- warna: mode terang (cream) ---- */
+  --color-bg: #faf6f0;
+  --color-bg-2: #f3ede3;
+  --color-surface: #fffefb;
+  --color-surface-2: #f7f2ea;
 
-  --color-ink: #0e1416;
-  --color-ink-2: #2c373c;
-  --color-muted: #5b6a70;
-  --color-line: #d9e2e4;
-  --color-line-2: #bcc9cd;
+  --color-ink: #2a2118;
+  --color-ink-2: #4d4033;
+  --color-muted: #857666;
+  --color-line: #e8dfd0;
+  --color-line-2: #d5c8b4;
 
-  /* turquoise — aksen utama */
-  --color-primary: #0d9488;
-  --color-primary-2: #0f766e;
-  --color-primary-soft: #ccfbf1;
+  /* aksen utama: cokelat hangat */
+  --color-primary: #8b5e3c;
+  --color-primary-2: #6e4630;
+  --color-primary-soft: #f0e2d2;
   /* teks di atas warna primary */
-  --color-on-primary: #ffffff;
+  --color-on-primary: #fffaf5;
 
-  /* cyan — aksen sekunder */
-  --color-accent: #0891b2;
-  --color-accent-2: #0e7490;
-  --color-accent-soft: #cffafe;
+  /* karamel, aksen sekunder */
+  --color-accent: #b07850;
+  --color-accent-2: #c4956a;
+  --color-accent-soft: #f5e6d5;
 
-  /* emerald — pendukung */
-  --color-mauve: #059669;
-  --color-mauve-soft: #d1fae5;
+  /* tan hangat, pendukung */
+  --color-mauve: #a67c52;
+  --color-mauve-soft: #f2e6d6;
 
-  /* teal — badge platform */
-  --color-jade: #0d9488;
-  --color-jade-soft: #ccfbf1;
+  /* cokelat muda, badge platform */
+  --color-jade: #9a7b52;
+  --color-jade-soft: #f0e6d4;
 
-  /* amber — pendukung */
-  --color-amber: #b45309;
-  --color-amber-soft: #fef3c7;
+  /* terakota lembut, pendukung */
+  --color-amber: #c47a3c;
+  --color-amber-soft: #f5e0cc;
 
-  --shadow-card: 0 1px 1px rgb(14 20 22 / 0.05), 0 2px 6px rgb(14 20 22 / 0.06),
-    0 12px 24px -8px rgb(14 20 22 / 0.1);
-  --shadow-card-hover: 0 1px 1px rgb(14 20 22 / 0.06),
-    0 4px 10px rgb(14 20 22 / 0.08), 0 22px 40px -12px rgb(14 20 22 / 0.16);
-  --shadow-float: 0 2px 4px rgb(14 20 22 / 0.07), 0 8px 20px -4px rgb(14 20 22 / 0.14),
-    0 30px 60px -20px rgb(14 20 22 / 0.2);
+  --shadow-card: 0 1px 1px rgb(42 33 24 / 0.05), 0 2px 6px rgb(42 33 24 / 0.06),
+    0 12px 24px -8px rgb(42 33 24 / 0.1);
+  --shadow-card-hover: 0 1px 1px rgb(42 33 24 / 0.06),
+    0 4px 10px rgb(42 33 24 / 0.08), 0 22px 40px -12px rgb(42 33 24 / 0.16);
+  --shadow-float: 0 2px 4px rgb(42 33 24 / 0.07), 0 8px 20px -4px rgb(42 33 24 / 0.14),
+    0 30px 60px -20px rgb(42 33 24 / 0.2);
 }
 
-/* ---------- tema gelap — charcoal (default) ---------- */
+/* ---------- tema gelap, espresso hangat (default) ---------- */
 .dark {
-  --color-bg: #0c0f11;
-  --color-bg-2: #090b0d;
-  --color-surface: #14181b;
-  --color-surface-2: #1b2024;
+  --color-bg: #1a1512;
+  --color-bg-2: #141110;
+  --color-surface: #221c18;
+  --color-surface-2: #2a231e;
 
-  --color-ink: #eef3f3;
-  --color-ink-2: #c2ccce;
-  --color-muted: #87949a;
-  --color-line: #212a2e;
-  --color-line-2: #2f3b40;
+  --color-ink: #f5efe6;
+  --color-ink-2: #d9cfc0;
+  --color-muted: #9a8e7e;
+  --color-line: #3a322b;
+  --color-line-2: #4a4139;
 
-  --color-primary: #2dd4bf;
-  --color-primary-2: #7ff3e4;
-  --color-primary-soft: #0e2f2c;
-  --color-on-primary: #04211d;
+  --color-primary: #e8c9a0;
+  --color-primary-2: #f0d8b8;
+  --color-primary-soft: #3d2f24;
+  --color-on-primary: #1a1512;
 
-  --color-accent: #22d3ee;
-  --color-accent-2: #67e8f9;
-  --color-accent-soft: #0a2f38;
+  --color-accent: #d4a574;
+  --color-accent-2: #e8c9a0;
+  --color-accent-soft: #3a2c22;
 
-  --color-mauve: #34d399;
-  --color-mauve-soft: #0d2f24;
+  --color-mauve: #c9a87c;
+  --color-mauve-soft: #3a2e24;
 
-  --color-jade: #14b8a6;
-  --color-jade-soft: #0c3a35;
+  --color-jade: #c4a57a;
+  --color-jade-soft: #3a2e24;
 
-  --color-amber: #fbbf24;
-  --color-amber-soft: #3a2c0c;
+  --color-amber: #e0a86c;
+  --color-amber-soft: #3d2c1e;
 
   --shadow-card: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 6px rgb(0 0 0 / 0.3),
     0 12px 24px -8px rgb(0 0 0 / 0.45);
@@ -107,19 +106,19 @@
    Warna blob sengaja dibalik dari latar supaya selalu berkontras:
    terang di mode gelap, gelap di mode terang. */
 :root {
-  --blob-body-1: #39464a;
-  --blob-body-2: #141c1e;
-  --blob-eye: #f4f7f8;
-  --blob-accent: #0d9488;
-  --blob-gloss: #ffffff;
-  --blob-shadow: rgb(14 20 22 / 0.35);
+  --blob-body-1: #c4a57a;
+  --blob-body-2: #8b5e3c;
+  --blob-eye: #faf6f0;
+  --blob-accent: #6e4630;
+  --blob-gloss: #fffefb;
+  --blob-shadow: rgb(42 33 24 / 0.35);
 }
 .dark {
-  --blob-body-1: #f7fcfc;
-  --blob-body-2: #b6c3c5;
-  --blob-eye: #0b0f10;
-  --blob-accent: #2dd4bf;
-  --blob-gloss: #ffffff;
+  --blob-body-1: #f5efe6;
+  --blob-body-2: #c9a87c;
+  --blob-eye: #1a1512;
+  --blob-accent: #e8c9a0;
+  --blob-gloss: #fffefb;
   --blob-shadow: rgb(0 0 0 / 0.55);
 }
 
@@ -156,7 +155,7 @@ html {
      Halaman ini satu halaman utuh dan semua navigasi memakai animasi scroll
      sendiri di `lib/smooth-scroll.ts`. Kalau smooth scroll native browser
      ikut aktif, setiap langkah animasi manual kita akan memicu ulang animasi
-     native — 60x per detik — sehingga keduanya bertabrakan dan hasilnya
+     native, 60x per detik, sehingga keduanya bertabrakan dan hasilnya
      terasa instan. Menghapus aturan ini di akar masalahnya. */
 }
 
@@ -198,7 +197,7 @@ body {
   border: 3px solid var(--color-bg);
 }
 
-/* utilitas desain — anti flat */
+/* utilitas desain, anti flat */
 
 /* lapisan highlight di tepi atas card */
 .surface {
@@ -266,7 +265,7 @@ body {
   animation: drift 20s ease-in-out infinite;
 }
 
-/* grain / noise — supaya tidak terlihat plastik */
+/* grain / noise, supaya tidak terlihat plastik */
 .grain::after {
   content: "";
   position: absolute;
@@ -353,7 +352,7 @@ body {
   }
 }
 
-/* partikel ambien layar sambutan — melayang pelan lalu memudar */
+/* partikel ambien layar sambutan, melayang pelan lalu memudar */
 @keyframes particle-drift {
   0% {
     transform: translate3d(0, 0, 0);
@@ -371,7 +370,7 @@ body {
   }
 }
 
-/* reduced motion — aksesibilitas */
+/* reduced motion, aksesibilitas */
 
 @media (prefers-reduced-motion: reduce) {
   html {

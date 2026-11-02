@@ -7,7 +7,7 @@ import { scrollToElement } from "@/lib/smooth-scroll";
  * Tombol "kembali ke atas" yang berfungsi di halaman mana pun.
  *
  * Memakai animasi scroll sendiri (`scrollToElement`) supaya konsisten dengan
- * navigasi navbar, dan tidak bergantung pada keberadaan elemen `#top` — di
+ * navigasi navbar, dan tidak bergantung pada keberadaan elemen `#top`, di
  * halaman /projects pun tombol ini tetap bekerja.
  */
 export function ScrollTopButton({ className }: { className?: string }) {

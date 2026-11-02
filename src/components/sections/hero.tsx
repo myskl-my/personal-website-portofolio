@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -20,7 +20,7 @@ import { CodeWindow } from "@/components/sections/code-window";
  *
  * Animasi fade-in masuk ditahan sampai layar sambutan selesai
  * (`useIntroComplete`), supaya stagger yang ada berjalan tepat saat overlay
- * membuka — bukan terbuang di baliknya. Kalau intro tidak diputar (sudah
+ * membuka, bukan terbuang di baliknya. Kalau intro tidak diputar (sudah
  * pernah dalam sesi ini / reduced motion), animasi berjalan seperti biasa.
  */
 export function Hero() {
@@ -59,10 +59,8 @@ export function Hero() {
             {...fade(0.12, 22)}
             className="mt-6 text-[clamp(2.3rem,8.5vw,4.5rem)] leading-[1.03] font-semibold tracking-[-0.035em] text-balance text-[var(--color-ink)]"
           >
-            {/* Potong dua bagian terakhir ("With AI") untuk gradient —
-                kalau teks headline berubah, sisanya tetap terbaca utuh. */}
-            {site.headline.replace(/\sWith AI$/, "")}{" "}
-            <span className="text-gradient">With AI</span>
+            I Build Your{" "}
+            <span className="text-gradient">Dreams</span>
           </motion.h1>
 
           <motion.p
@@ -70,15 +68,6 @@ export function Hero() {
             className="mt-5 text-[clamp(1.05rem,3.6vw,1.4rem)] leading-snug font-medium tracking-[-0.01em] text-[var(--color-muted)]"
           >
             {site.tagline}
-          </motion.p>
-
-          <motion.p
-            {...fade(0.32, 16)}
-            className="mt-5 max-w-xl text-[15px] leading-relaxed text-[var(--color-muted)] sm:text-base"
-          >
-            Saya merancang, membangun, menguji, dan merilis produk digital
-            dengan alur kerja yang diperkuat AI. AI jadi metode kerja, hasilnya
-            tetap produk yang benar-benar berjalan.
           </motion.p>
 
           <motion.div
@@ -91,13 +80,13 @@ export function Hero() {
               className="group relative inline-flex min-h-[52px] items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--color-primary)] px-7 text-[15px] font-semibold text-[var(--color-on-primary)] shadow-[var(--shadow-card)] transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-float)] active:scale-[0.97]"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <span className="relative">Explore Projects</span>
+              <span className="relative">See my work</span>
               <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
 
             <button
               type="button"
-              onClick={() => scrollTo("kontak")}
+              onClick={() => scrollTo("contact")}
               className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-7 text-[15px] font-semibold text-[var(--color-ink)] transition-[box-shadow,transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:shadow-[var(--shadow-card)] active:scale-[0.97]"
             >
               <MessageCircle className="h-4 w-4 text-[var(--color-primary)]" />
@@ -106,7 +95,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* kolom kartu kode */}
+        {/* kolom kartu kode, disembunyikan di mobile */}
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 28, filter: "blur(10px)" }}
           animate={
@@ -115,7 +104,7 @@ export function Hero() {
               : { opacity: 0, y: 28, filter: "blur(10px)" }
           }
           transition={{ ...spring.soft, delay: 0.3 }}
-          className="relative w-full"
+          className="relative hidden w-full md:block"
         >
           <div
             aria-hidden
@@ -133,3 +122,5 @@ export function Hero() {
     </section>
   );
 }
+
+

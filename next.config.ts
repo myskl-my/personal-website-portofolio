@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Static export → hasil build berupa folder `out/` berisi HTML/CSS/JS murni.
-  // Bisa dihosting di Firebase Hosting, Netlify, Cloudflare Pages, dsb.
+  // Bisa dihosting di Cloudflare Pages, Netlify, dsb.
   // Syarat: tidak boleh memakai fitur yang butuh server Node.js
   // (server actions, cookies, rewrites, ISR, proxy).
   //

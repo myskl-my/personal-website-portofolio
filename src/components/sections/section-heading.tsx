@@ -4,19 +4,17 @@ import { cn } from "@/lib/utils";
 /**
  * Judul section yang dipakai ulang di seluruh halaman.
  *
- * Satu tempat untuk mengatur hierarki tipografi (eyebrow, judul, deskripsi)
- * supaya setiap section punya ritme yang konsisten tanpa menyalin kelas.
+ * Hanya eyebrow (label kategori) yang ditampilkan; deskripsi opsional.
+ * Eyebrow sudah cukup menjelaskan isi bagian tersebut.
  */
 export function SectionHeading({
   eyebrow,
-  title,
   description,
   align = "left",
-  as: Tag = "h2",
   className,
 }: {
   eyebrow?: string;
-  title: React.ReactNode;
+  title?: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
   as?: "h1" | "h2" | "h3";
@@ -31,13 +29,10 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="text-[12.5px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)]">
+        <p className="text-[clamp(1.35rem,3.5vw,2rem)] font-bold uppercase tracking-[0.12em] text-[var(--color-primary)]">
           {eyebrow}
         </p>
       )}
-      <Tag className="mt-3 max-w-3xl text-[clamp(1.6rem,5vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance text-[var(--color-ink)]">
-        {title}
-      </Tag>
       {description && (
         <p
           className={cn(

@@ -44,7 +44,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   return (
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter kategori">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Category filter">
           {filters.map((f) => {
             const active = category === f.value;
             return (
@@ -101,10 +101,10 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       ) : (
         <div className="surface mt-6 rounded-3xl px-6 py-20 text-center">
           <p className="text-[15px] font-medium text-[var(--color-ink)]">
-            No projects match.
+            Nothing matches that.
           </p>
           <p className="mt-2 text-[14px] text-[var(--color-muted)]">
-            Try a different keyword or pick another category.
+            Try a different keyword or another category.
           </p>
           <button
             type="button"

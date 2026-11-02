@@ -3,7 +3,6 @@
   shortName: "DC",
   role: "AI-Powered Full-Stack Developer",
   tagline: "I build your dreams",
-  headline: "I Build Your Dreams",
   description:
     "Portfolio of Diki Candra, a full-stack developer. I design, build, test, and ship digital products, from raw idea to production-ready.",
   email: "dikicandra121204@gmail.com",

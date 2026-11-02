@@ -63,13 +63,6 @@ export function Hero() {
             <span className="text-gradient">Dreams</span>
           </motion.h1>
 
-          <motion.p
-            {...fade(0.22, 16)}
-            className="mt-5 text-[clamp(1.05rem,3.6vw,1.4rem)] leading-snug font-medium tracking-[-0.01em] text-[var(--color-muted)]"
-          >
-            {site.tagline}
-          </motion.p>
-
           <motion.div
             {...fade(0.42, 16)}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"

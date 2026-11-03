@@ -15,7 +15,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative mt-24 border-t border-[var(--color-line)] bg-[var(--color-bg-2)]">
+    <footer className="relative border-t border-[var(--color-line)] bg-[var(--color-bg-2)]">
       <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">

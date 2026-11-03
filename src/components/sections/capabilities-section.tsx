@@ -1,14 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  Layout,
-  Smartphone,
-  Layers,
-  Palette,
-  Server,
-  CloudUpload,
-} from "lucide-react";
+import { Layout, Layers, Server, Smartphone, Tablet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { RegisterSection } from "@/components/providers/register-section";
@@ -17,49 +10,51 @@ import { spring } from "@/lib/motion";
 type Capability = {
   icon: LucideIcon;
   title: string;
+  technologies: string[];
+  career: string;
   description: string;
 };
 
-/**
- * Keahlian ditampilkan sebagai bidang kerja beserta stack utama,
- * bukan daftar nama teknologi dengan angka kecakapan.
- */
 const CAPABILITIES: Capability[] = [
   {
-    icon: Layout,
-    title: "Web Development",
+    icon: Server,
+    title: "Backend Development",
+    technologies: ["PHP", "Laravel", "MySQL"],
+    career: "Backend Developer / Web Developer",
     description:
-      "React, Next.js, TypeScript, and Tailwind CSS: modern web apps built to last.",
+      "Logika server, alur data, dan basis data yang andal untuk aplikasi web produksi.",
   },
   {
-    icon: Smartphone,
-    title: "Android Development",
+    icon: Layout,
+    title: "Frontend Development",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    career: "Frontend Developer",
     description:
-      "Native Android apps end to end, from architecture to release.",
+      "Antarmuka modern, responsif, dan mudah diakses dengan stack yang ringkas.",
   },
   {
     icon: Layers,
-    title: "Multi-Platform development with Flutter",
+    title: "Full-Stack Development",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    career: "Frontend Developer / Full-Stack Developer",
     description:
-      "Cross-platform mobile from one codebase: fast, consistent, production-ready.",
+      "Aplikasi full-stack dengan Next.js, dari frontend hingga backend dalam satu ekosistem.",
   },
   {
-    icon: Palette,
-    title: "UI Engineering",
+    icon: Smartphone,
+    title: "Cross-Platform Mobile Development",
+    technologies: ["Flutter", "Dart"],
+    career: "Mobile Developer",
     description:
-      "Crafting fast, responsive, accessible interfaces that feel right on any screen.",
+      "Aplikasi mobile multiplatform dengan satu basis kode untuk Android dan iOS.",
   },
   {
-    icon: Server,
-    title: "APIs & Backend",
+    icon: Tablet,
+    title: "Native Android Development",
+    technologies: ["Kotlin", "Jetpack Compose"],
+    career: "Android Developer",
     description:
-      "Designing solid server logic, data flows, and integrations that keep apps running without drama.",
-  },
-  {
-    icon: CloudUpload,
-    title: "Deployment",
-    description:
-      "Cloudflare Pages and release workflows: ship fast, keep production stable.",
+      "Aplikasi Android native dengan Kotlin dan antarmuka modern via Jetpack Compose.",
   },
 ];
 
@@ -68,10 +63,17 @@ export function CapabilitiesSection() {
 
   return (
     <RegisterSection id="capabilities">
-      <section className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="relative border-y border-[var(--color-line)] bg-[var(--color-bg-2)]">
+        <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
         <SectionHeading
-          eyebrow="Skills & Experience"
-          description="Web, mobile, and the stack behind them, focused on products that ship."
+          eyebrow="Skills"
+          description={
+            <>
+              Teknologi yang menjadi fokus pembelajaran dan pengembangan proyek,
+              disusun berdasarkan kebutuhan rekrutmen Web Developer. Daftar ini
+              menampilkan area fokus, bukan klaim kemampuan penuh.
+            </>
+          }
         />
 
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -89,15 +91,30 @@ export function CapabilitiesSection() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-primary-soft)] text-[var(--color-primary)]">
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 text-[16px] font-semibold tracking-tight text-[var(--color-ink)]">
+                <h3 className="mt-1 text-[17px] font-semibold tracking-tight text-[var(--color-ink)]">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-muted)]">
+                <p className="mt-1 text-[12px] text-[var(--color-muted)]">
+                  {item.career}
+                </p>
+                <ul className="mt-3 space-y-1.5">
+                  {item.technologies.map((tech) => (
+                    <li
+                      key={tech}
+                      className="flex items-center gap-1.5 text-[14px] text-[var(--color-ink-2)]"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-line-2)]" />
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-auto pt-4 text-[13px] leading-relaxed text-[var(--color-muted)]">
                   {item.description}
                 </p>
               </motion.div>
             );
           })}
+        </div>
         </div>
       </section>
     </RegisterSection>

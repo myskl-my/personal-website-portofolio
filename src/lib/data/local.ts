@@ -90,4 +90,55 @@ export const projects: Project[] = [
     status: "published",
     order: 1,
   },
+  {
+    slug: "reservasi-barbershop",
+    title: "Reservasi/Booking Barbershop",
+    tagline: "Sistem reservasi online untuk barbershop",
+    summary:
+      "Sistem pemesanan antrian dan layanan potong rambut secara online. Pelanggan bisa memilih layanan, tanggal, dan waktuAntrian langsung dari browser tanpa perlu telepon.",
+    description:
+      "Website reservasi barbershop dengan 2 panel: panel customer untuk pemesanan layanan dan waktu antrian, serta panel admin untuk mengoperasikan dashboard dan mengelola reservasi. Antarmuka sederhana dan responsif.",
+    role: "Full-Stack Developer",
+    timeline: "2026",
+
+    platforms: ["Web"],
+    category: "web",
+
+    techStack: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Tailwind CSS",
+    ],
+    highlights: [
+      "Pemesanan layanan dan waktu antrian secara online (panel customer).",
+      "Manajemen antrian dan jadwal booking dari panel admin.",
+      "Antarmuka responsif untuk pelanggan dan admin.",
+    ],
+
+    liveUrl: "https://reservasionline.pages.dev",
+
+    coverImage: "/projects/reservasi-barbershop/cover.png",
+    gallery: [
+      {
+        src: "/projects/reservasi-barbershop/screenshot-1.png",
+        alt: "Tampilan halaman utama Reservasi Barbershop",
+        caption: "Halaman utama reservasi",
+      },
+      {
+        src: "/projects/reservasi-barbershop/screenshot-2.png",
+        alt: "Tampilan pemilihan layanan dan waktu",
+        caption: "Pilih layanan dan waktu",
+      },
+      {
+        src: "/projects/reservasi-barbershop/screenshot-3.png",
+        alt: "Tampilan konfirmasi booking",
+        caption: "Konfirmasi pesanan",
+      },
+    ],
+
+    featured: true,
+    status: "published",
+    order: 2,
+  },
 ];

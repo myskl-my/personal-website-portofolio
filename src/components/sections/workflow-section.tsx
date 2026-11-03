@@ -46,7 +46,7 @@ const STEPS: Step[] = [
   },
   {
     icon: Rocket,
-    title: "Ship",
+    title: "Deploy",
     description:
       "Deploy to production, verify in the wild, then polish whatever still feels off.",
   },
@@ -57,11 +57,11 @@ export function WorkflowSection() {
 
   return (
     <RegisterSection id="workflow">
-      <section className="relative border-y border-[var(--color-line)] bg-[var(--color-bg-2)]">
+        <section className="relative border-y border-[var(--color-line)] bg-[var(--color-surface)]">
         <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <SectionHeading
             eyebrow="Development Workflow"
-            description="Same playbook every time: understand the problem, build in slices, and ship something that actually works."
+            description="Same playbook every time: understand the problem, build in slices, and deploy something that actually works."
           />
 
           <ol className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

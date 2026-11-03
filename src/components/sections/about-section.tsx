@@ -15,7 +15,7 @@ export function AboutSection() {
 
   return (
     <RegisterSection id="about">
-      <section className="relative border-y border-[var(--color-line)] bg-[var(--color-bg-2)]">
+        <section className="relative border-y border-[var(--color-line)] bg-[var(--color-surface)]">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <SectionHeading

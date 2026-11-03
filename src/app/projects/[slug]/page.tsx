@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, Image as ImageIcon } from "lucide-react";
 import { getProject, getProjects } from "@/lib/data";
+import { SectionHeading } from "@/components/sections/section-heading";
 import { categoryAccent } from "@/lib/project-links";
 import { cn } from "@/lib/utils";
 
@@ -60,6 +61,11 @@ export default async function ProjectDetailPage({ params }: Props) {
         <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-[var(--color-muted)]">
           {project.tagline}
         </p>
+        {project.description && (
+          <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-[var(--color-ink-2)]">
+            {project.description}
+          </p>
+        )}
       </header>
 
       {/* cover / placeholder visual */}
@@ -135,6 +141,77 @@ export default async function ProjectDetailPage({ params }: Props) {
           </a>
         </div>
       )}
+
+      {/* stack yang dipakai */}
+      <section className="mt-20 border-y border-[var(--color-line)] bg-[var(--color-bg-2)]">
+        <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Stack"
+              description="Teknologi yang digunakan untuk membangun portfolio ini."
+            />
+          </div>
+
+          <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Frontend
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                Next.js + React
+              </p>
+            </li>
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Styling
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                Tailwind CSS
+              </p>
+            </li>
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Animasi
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                Framer Motion
+              </p>
+            </li>
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Ikon
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                lucide-react
+              </p>
+            </li>
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Database
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                Node SQLite
+              </p>
+            </li>
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Backend
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                Next.js Route Handlers
+              </p>
+            </li>
+            <li className="surface p-4 rounded-xl">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                Deploy
+              </span>
+              <p className="mt-1 text-[14px] font-semibold text-[var(--color-ink)]">
+                Firebase Hosting
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
     </article>
   );
 }

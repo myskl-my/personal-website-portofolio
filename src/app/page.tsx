@@ -9,7 +9,7 @@ import { RegisterSection } from "@/components/providers/register-section";
  * Halaman utama, satu halaman utuh dengan navigasi scroll.
  *
  *   #top          : hero, paling atas
- *   #projects     : featured projects
+ *   #projects     : my projects
  *   #workflow     : alur kerja development
  *   #capabilities : kemampuan teknis
  *   #about        : tentang saya

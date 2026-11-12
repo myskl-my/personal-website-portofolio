@@ -10,18 +10,18 @@ import { useIntroComplete } from "@/lib/welcome-store";
 import { CodeWindow } from "@/components/sections/code-window";
 
 /**
- * Hero dua kolom.
+ * Two-column hero.
  *
- * Desktop: teks di kiri, kartu kode di kanan, sejajar tengah.
- * Mobile : satu kolom, kartu kode berada di bawah teks.
+ * Desktop: text on left, code card on right, side by side centered.
+ * Mobile : single column, code card below text.
  *
- * Semua animasi masuk menghormati `prefers-reduced-motion` (dilewati kalau
- * dikurangi). Tombol memakai animasi scroll sendiri dari `lib/smooth-scroll`.
+ * All entrance animations respect `prefers-reduced-motion` (skipped if
+ * reduced). Buttons use their own scroll animation from `lib/smooth-scroll`.
  *
- * Animasi fade-in masuk ditahan sampai layar sambutan selesai
- * (`useIntroComplete`), supaya stagger yang ada berjalan tepat saat overlay
- * membuka, bukan terbuang di baliknya. Kalau intro tidak diputar (sudah
- * pernah dalam sesi ini / reduced motion), animasi berjalan seperti biasa.
+ * Entrance fade-in animation is held until welcome screen is done
+ * (`useIntroComplete`), so existing stagger runs exactly when overlay
+ * opens, not wasted behind it. If intro is not played (already in this
+ * session / reduced motion), animation runs as usual.
  */
 export function Hero() {
   const reduce = useReducedMotion();
@@ -88,7 +88,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* kolom kartu kode, disembunyikan di mobile */}
+        {/* code card column, hidden on mobile */}
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 28, filter: "blur(10px)" }}
           animate={

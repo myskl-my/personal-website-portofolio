@@ -8,10 +8,11 @@ import { ProjectGrid } from "@/components/project/project-grid";
 import { cn } from "@/lib/utils";
 
 /**
- * Daftar project dengan filter kategori dan pencarian.
+ * Project list with category filter and search.
  *
- * Filter dijalankan di klien sepenuhnya karena situs ini `output: "export"`
- * tanpa server. Jumlah project masih sedikit, jadi tidak perlu virtualisasi.
+ * Filter runs entirely on client because this site is `output: "export"`
+ * without server. Number of projects is still small, so no virtualization
+ * needed.
  */
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
   const [category, setCategory] = React.useState<Category | "all">("all");

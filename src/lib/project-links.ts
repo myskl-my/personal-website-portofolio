@@ -1,22 +1,22 @@
 import type { Project, ProjectLink } from "./data/types";
 
 /**
- * Menentukan tombol mana yang harus muncul untuk sebuah project.
+ * Determines which buttons should appear for a project.
  *
- * Prinsipnya: JANGAN pakai enum atau flag untuk menentukan tampilan. Baca saja
- * data yang ada, platform apa saja yang dipakai, dan tautan mana yang terisi.
- * Dengan begitu menambah satu project baru cukup mengisi field, tidak perlu
- * menyentuh kode.
+ * Principle: DON'T use enum or flag to determine display. Just read
+ * existing data, which platforms are used, and which links are filled.
+ * That way adding a new project only requires filling fields, no need
+ * to touch code.
  *
- * Contoh kombinasi yang sah dan otomatis terpenuhi:
+ * Example valid combinations that are automatically fulfilled:
  *   { platforms: ["Web", "Android"], liveUrl, downloadUrl, videoUrl }
- *   → muncul 3 tombol sekaligus.
+ *   → 3 buttons appear at once.
  */
 export function getProjectLinks(project: Project): ProjectLink[] {
   const links: ProjectLink[] = [];
 
-  // Label download menyesuaikan platform supaya tidak ambigu:
-  // "Download" saja membuat orang tidak tahu akan mendapat file apa.
+  // Download label adjusts to platform so it's not ambiguous:
+  // "Download" alone makes people not know what file they'll get.
   const isAndroid = project.platforms.includes("Android");
   const isWindows = project.platforms.includes("Windows");
   const isLinux = project.platforms.includes("Linux");
@@ -62,12 +62,12 @@ export function getProjectLinks(project: Project): ProjectLink[] {
   return links;
 }
 
-/** Halaman detail selalu ada, jadi tombol pertama tidak pernah kosong. */
+/** Detail page always exists, so the first button is never empty. */
 export function getDetailHref(project: Project): string {
   return `/projects/${project.slug}`;
 }
 
-/** Warna aksen per kategori, dipakai untuk badge dan gradient cover. */
+/** Accent color per category, used for badge and cover gradient. */
 export const categoryAccent: Record<Project["category"], string> = {
   web: "var(--color-primary)",
   mobile: "var(--color-accent)",

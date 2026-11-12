@@ -17,9 +17,9 @@ export function CopyButton({ value, label, className, children }: Props) {
   const [copied, setCopied] = React.useState(false);
   const timer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Tanpa `children`, komponen ini hanya ikon salin + toast.
-  // Nilai teksnya sengaja TIDAK dirender di sini supaya tidak dobel
-  // dengan teks yang sudah tampil di elemen sebelahnya.
+  // Without `children`, this component is just a copy icon + toast.
+  // Text value is deliberately NOT rendered here so it doesn't double
+  // with text already displayed in the adjacent element.
 
   React.useEffect(
     () => () => {

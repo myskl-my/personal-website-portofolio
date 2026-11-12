@@ -17,13 +17,14 @@ import {
 import { cn } from "@/lib/utils";
 
 /**
- * Layar sambutan interaktif.
+ * Interactive welcome screen.
  *
- * Alur: begitu dipasang ia memutuskan sekali (per sesi) apakah intro harus
- * diputar. Jika ya, overlay muncul penuh, blob masuk, lalu beridle sambil
- * sesekali menunjuk tombol. Tombol baru aktif setelah font & dokumen siap dan
- * animasi masuk selesai. Klik â†’ blob gembira, aksen teal mengembang, overlay
- * memudar, dan animasi masuk beranda (di `Hero`) mulai bersamaan.
+ * Flow: as soon as mounted it decides once (per session) whether intro should
+ * play. If yes, overlay appears full, blob enters, then idles while
+ * occasionally pointing at the button. Button only becomes active after font
+ * & document are ready and entrance animation is done. Click → happy blob,
+ * teal accent expands, overlay fades, and homepage entrance animation (in
+ * `Hero`) starts at the same time.
  */
 
 const MIN_INTRO_MS = 1100;
@@ -35,13 +36,13 @@ export function WelcomeExperience() {
   const shouldRender = status === "playing";
   const active = status === "playing" || status === "entering";
 
-  // Putuskan sekali apakah intro diputar (aman SSR: baca sessionStorage hanya
-  // di dalam effect).
+  // Decide once whether intro is played (SSR-safe: read sessionStorage only
+  // inside effect).
   React.useEffect(() => {
     initWelcome(pathname);
   }, [pathname]);
 
-  // Kunci scroll selama overlay masih ada.
+  // Lock scroll while overlay is still present.
   React.useEffect(() => {
     if (!active) return;
     const previous = document.body.style.overflow;
@@ -51,8 +52,8 @@ export function WelcomeExperience() {
     };
   }, [active]);
 
-  // Konten di belakang dibuat `inert` supaya fokus keyboard tidak bocor ke
-  // beranda; dilepas saat fase masuk supaya beranda langsung bisa dipakai.
+  // Content behind is made `inert` so keyboard focus doesn't leak to
+  // homepage; released on enter phase so homepage can be used right away.
   React.useEffect(() => {
     const root = document.getElementById("site-root");
     if (!root) return;
@@ -78,13 +79,14 @@ function WelcomeOverlay() {
   const [excited, setExcited] = React.useState(false);
   const enteringRef = React.useRef(false);
 
-  // Callback ref: tombol hanya ter-render pada cabang `ready`, jadi saat node-nya
-  // muncul kita langsung memberi fokus (tanpa menggeser halaman).
+  // Callback ref: button only renders on `ready` branch, so when node
+  // appears we give it focus right away (without shifting page).
   const registerButton = React.useCallback((el: HTMLButtonElement | null) => {
     if (el) window.requestAnimationFrame(() => el.focus({ preventScroll: true }));
   }, []);
 
-  // --- Kesiapan: font + dokumen + durasi animasi masuk, dengan pengaman. ---
+  // --- Readiness: font + document + entrance animation duration, with
+  // failsafe. ---
   React.useEffect(() => {
     let settled = false;
     const settle = () => {
@@ -108,15 +110,15 @@ function WelcomeOverlay() {
           );
 
     Promise.all([minDelay, fonts, loaded]).then(settle).catch(settle);
-    // Pengaman: apa pun yang terjadi (mis. font gagal), tombol tetap aktif.
+    // Failsafe: whatever happens (e.g. font fails), button stays active.
     const failsafe = window.setTimeout(settle, PREP_TIMEOUT_MS);
 
     return () => window.clearTimeout(failsafe);
   }, [reduce]);
 
-  // Siklus ajakan: menunjuk â†’ menatap pengunjung â†’ rileks, lalu jeda.
-  // Saat reduced motion, gestur ajakan tetap ditampilkan secara statis (lihat
-  // `basePose`) tanpa siklus.
+  // Invite cycle: point → look at visitor → relax, then pause. With
+  // reduced motion, invite gesture is still shown statically (see
+  // `basePose`) without cycle.
   React.useEffect(() => {
     if (reduce) return;
     let t1 = 0;
@@ -150,7 +152,7 @@ function WelcomeOverlay() {
     window.setTimeout(enterWelcome, reduce ? 0 : 140);
   }, [ready, reduce]);
 
-  // Escape = cara alternatif melewati intro (perilaku dialog yang diharapkan).
+  // Escape = alternative way to skip intro (expected dialog behavior).
   React.useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleEnter();
@@ -170,7 +172,7 @@ function WelcomeOverlay() {
       exit={{ opacity: 0 }}
       transition={{ duration: reduce ? 0.15 : 0.55, ease }}
     >
-      {/* latar lembut agar tidak terasa datar */}
+      {/* soft background so it doesn't feel flat */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -182,7 +184,7 @@ function WelcomeOverlay() {
 
       <AmbientParticles />
 
-      {/* aksen yang mengembang saat masuk */}
+      {/* accent that expands on enter */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 rounded-full"

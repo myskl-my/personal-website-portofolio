@@ -14,13 +14,13 @@
 } as const;
 
 /**
- * Navigasi utama.
+ * Main navigation.
  *
- * Situs ini satu halaman utuh: hero di atas, project dan penjelasan alur kerja
- * di tengah, kontak di bawah. Karena itu semua tautan memakai anchor `#id`,
- * bukan route. Tombol navbar hanya menggulir, tidak pernah berpindah halaman.
+ * This site is one full page: hero on top, projects and workflow explanation
+ * in the middle, contact at the bottom. That's why all links use anchor `#id`,
+ * not route. Navbar buttons only scroll, never change pages.
  *
- * `id` harus sama persis dengan `sectionIds` di bawah.
+ * `id` must match exactly `sectionIds` below.
  */
 export const navLinks = [
   { id: "top", label: "Home" },
@@ -32,10 +32,10 @@ export const navLinks = [
 ] as const;
 
 /**
- * Section yang dipantau untuk menentukan tab aktif.
+ * Sections monitored to determine active tab.
  *
- * Boleh lebih banyak daripada `navLinks` (mis. section yang tidak punya tombol
- * navbar sendiri tetap dipantau supaya indikator tidak "nyangkut").
+ * May be more than `navLinks` (e.g. section without its own navbar
+ * button is still monitored so indicator doesn't get "stuck").
  */
 export const sectionIds = [
   "top",

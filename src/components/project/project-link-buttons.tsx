@@ -23,8 +23,8 @@ function LinkIcon({ name }: { name?: string }) {
 }
 
 /**
- * Deretan tombol tautan. Dipakai di kartu project maupun halaman detail.
- * `external` membuka tab baru, `internal` memakai routing Next.js.
+ * Row of link buttons. Used on project card as well as detail page.
+ * `external` opens new tab, `internal` uses Next.js routing.
  */
 export function ProjectLinkButtons({
   links,

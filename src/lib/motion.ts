@@ -1,10 +1,10 @@
 import type { Transition } from "framer-motion";
 
 /**
- * Token gerak, 3 spring konsisten dipakai di seluruh aplikasi.
- * snap  : tekan tombol, toggle
- * soft  : hover, muncul/hilang
- * bounce: sukses, konfirmasi
+ * Motion tokens, 3 consistent springs used throughout the app.
+ * snap  : press button, toggle
+ * soft  : hover, appear/disappear
+ * bounce: success, confirmation
  */
 export const spring = {
   snap: { type: "spring", stiffness: 400, damping: 30 } as Transition,
@@ -12,5 +12,5 @@ export const spring = {
   bounce: { type: "spring", stiffness: 350, damping: 15 } as Transition,
 } as const;
 
-/** Durasi easing halus untuk transisi non-spring. */
+/** Smooth easing for non-spring transitions. */
 export const ease = [0.4, 0, 0.2, 1] as const;

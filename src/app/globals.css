@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* Warm Cream, design tokens.
-   Karakter: hangat, lembut, elegan. Krem sebagai dasar, cokelat tua untuk
-   teks dan aksen, karamel untuk detail. Mode gelap memakai espresso hangat
-   dengan aksen krem terang. */
+   Character: warm, soft, elegant. Cream as base, dark chocolate for
+   text and accent, caramel for detail. Dark mode uses warm espresso
+   with light cream accent. */
 
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -31,7 +31,7 @@
   --color-line: #e8dfd0;
   --color-line-2: #d5c8b4;
 
-  /* aksen utama: cokelat hangat */
+  /* main accent: warm chocolate */
   --color-primary: #8b5e3c;
   --color-primary-2: #6e4630;
   --color-primary-soft: #f0e2d2;
@@ -102,9 +102,9 @@
     0 30px 60px -20px rgb(0 0 0 / 0.65);
 }
 
-/* Karakter "Little Blob" (layar sambutan).
-   Warna blob sengaja dibalik dari latar supaya selalu berkontras:
-   terang di mode gelap, gelap di mode terang. */
+/* "Little Blob" character (welcome screen).
+   Blob colors are deliberately inverted from background so they always
+   contrast: light in dark mode, dark in light mode. */
 :root {
   --blob-body-1: #c4a57a;
   --blob-body-2: #8b5e3c;
@@ -122,10 +122,10 @@
   --blob-shadow: rgb(0 0 0 / 0.55);
 }
 
-/* Teks tidak bisa diseleksi. Mencegah highlight biru saat mouse digerakkan
-   di atas teks, supaya tidak terlihat seperti pengguna sedang menyorot atau
-   menyalin. Yang tetap diseleksi: input, textarea, `code`/`pre`, dan elemen
-   ber-atribut `data-selectable`. */
+/* Text cannot be selected. Prevents blue highlight when mouse is moved
+   over text, so it doesn't look like user is selecting or copying.
+   Still selectable: input, textarea, `code`/`pre`, and elements
+   with `data-selectable` attribute. */
 
 body {
   -webkit-user-select: none;
@@ -151,12 +151,12 @@ var,
 
 html {
   -webkit-text-size-adjust: 100%;
-  /* Catatan: `scroll-behavior: smooth` sengaja TIDAK di sini.
-     Halaman ini satu halaman utuh dan semua navigasi memakai animasi scroll
-     sendiri di `lib/smooth-scroll.ts`. Kalau smooth scroll native browser
-     ikut aktif, setiap langkah animasi manual kita akan memicu ulang animasi
-     native, 60x per detik, sehingga keduanya bertabrakan dan hasilnya
-     terasa instan. Menghapus aturan ini di akar masalahnya. */
+  /* Note: `scroll-behavior: smooth` deliberately NOT here.
+     This page is one full page and all navigation uses our own scroll
+     animation in `lib/smooth-scroll.ts`. If native browser smooth scroll
+     is also active, every step of our manual animation will re-trigger
+     native animation, 60x per second, so they collide and the result
+     feels abrupt. Removing this rule at the root is the fix. */
 }
 
 body {
@@ -239,7 +239,7 @@ body {
   animation: gradient-shift 9s ease-in-out infinite;
 }
 
-/* mesh gradient background yang melayang */
+/* floating mesh gradient background */
 .mesh-bg::before {
   content: "";
   position: absolute;
@@ -265,7 +265,7 @@ body {
   animation: drift 20s ease-in-out infinite;
 }
 
-/* grain / noise, supaya tidak terlihat plastik */
+/* grain / noise, so it doesn't look plastic */
 .grain::after {
   content: "";
   position: absolute;
@@ -281,7 +281,7 @@ body {
   opacity: 0.22;
 }
 
-/* spotlight yang mengikuti kursor (dipakai di card) */
+/* spotlight that follows cursor (used on card) */
 .spotlight {
   position: relative;
   overflow: hidden;
@@ -352,7 +352,7 @@ body {
   }
 }
 
-/* partikel ambien layar sambutan, melayang pelan lalu memudar */
+/* ambient welcome screen particles, float slowly then fade */
 @keyframes particle-drift {
   0% {
     transform: translate3d(0, 0, 0);

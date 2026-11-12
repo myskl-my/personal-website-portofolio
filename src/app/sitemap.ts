@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 import { getProjects } from "@/lib/data";
 import { site } from "@/lib/site";
 
-// Wajib untuk `output: "export"`: metadata route harus ditandai statis.
+// Required for `output: "export"`: metadata route must be marked static.
 export const dynamic = "force-static";
 
 /**
- * Sitemap statis.
+ * Static sitemap.
  *
- * Dibuat saat build dari daftar project yang published. Karena situs memakai
- * `trailingSlash: true`, setiap URL diakhiri garis miring.
+ * Built at build time from the list of published projects. Since the site uses
+ * `trailingSlash: true`, every URL ends with a trailing slash.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = `https://${site.domain}`;

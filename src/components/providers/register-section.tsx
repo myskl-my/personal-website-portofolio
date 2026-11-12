@@ -4,12 +4,13 @@ import * as React from "react";
 import { useScrollSpy } from "@/components/providers/scroll-spy";
 
 /**
- * Membungkus sebuah section lalu mendaftarkan elemennya ke ScrollSpy
- * supaya navbar tahu section mana yang sedang terlihat.
+ * Wraps a section and registers its element to ScrollSpy
+ * so the navbar knows which section is currently visible.
  *
- * `id` dipasang langsung pada elemen wrapper, bukan pada elemen di dalam.
- * ScrollSpy mengukur posisi wrapper terhadap viewport, jadi wrapper WAJIB
- * punya id; tanpa itu section tak bisa dilacak dan tab aktif tak berganti.
+ * `id` is attached directly to the wrapper element, not to the element
+ * inside. ScrollSpy measures wrapper position against viewport, so wrapper
+ * MUST have an id; without it the section cannot be tracked and active tab
+ * does not change.
  */
 export function RegisterSection({
   id,

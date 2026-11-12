@@ -9,10 +9,10 @@ import { spring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Kartu project.
+ * Project card.
  *
- * Cover memakai coverImage bila ada, kalau tidak dipakai gradient
- * dari warna kategori.
+ * Cover uses coverImage if available, otherwise gradient from category
+ * color.
  */
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const reduce = useReducedMotion();

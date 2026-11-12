@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * Daftar seluruh project.
+ * List of all projects.
  *
- * Berbeda dari section Featured Projects di homepage yang hanya menampilkan
- * tiga unggulan, halaman ini menampilkan semuanya dan menyediakan filter
- * kategori serta pencarian.
+ * Unlike the Featured Projects section on the homepage which only shows
+ * three featured, this page shows all and provides category filter and
+ * search.
  */
 export default async function ProjectsPage() {
   const projects = await getProjects();

@@ -2,32 +2,32 @@ import type { Profile, Project } from "./types";
 import { site } from "@/lib/site";
 
 /**
- * Seed lokal, dibundel ke dalam build, jadi situs selalu bisa jalan
- * tanpa database apa pun.
+ * Local seed, bundled into the build so the site always works
+ * without any database.
  *
- * Ganti / tambah project di bawah saat siap dipamerkan; tidak ada
- * perubahan kode yang diperlukan.
+ * Replace / add projects below when ready to showcase; no code
+ * changes required.
  *
- * Konvensi isi:
- *   - slug        : unik, huruf kecil + tanda hubung. Tidak diubah setelah publish.
- *   - status      : hanya `published` yang tampil di halaman publik.
- *   - order       : kecil tampil lebih dulu.
- *   - tautan      : hapus baris yang tidak dipakai, jangan diisi string kosong.
+ * Fill conventions:
+ *   - slug        : unique, lowercase + hyphen. Do not change after publish.
+ *   - status      : only `published` shows on the public page.
+ *   - order       : smaller appears first.
+ *   - links       : remove unused lines, do not fill empty strings.
  *
- * Catatan tombol:
- *   UI tidak memakai enum untuk menentukan tombol. Dia membaca `platforms`
- *   dan tautan yang ada, lalu merender tombolnya sendiri. Kombinasi bebas;
- *   satu project bisa memunculkan tombol live + download + video sekaligus.
+ * Button notes:
+ *   UI does not use enum to determine buttons. It reads `platforms`
+ *   and existing links, then renders the buttons itself. Free combination;
+ *   one project can show live + download + video buttons at once.
  *
- * Catatan studi kasus:
- *   `caseStudy` bersifat opsional. Halaman detail hanya menampilkan bagian
- *   yang terisi, jadi project tetap tampil rapi walau belum lengkap.
+ * Case study notes:
+ *   `caseStudy` is optional. Detail page only displays filled parts,
+ *   so project still looks neat even if incomplete.
  */
 
 /**
- * Profil kontak, sumber kebenaran tunggal ada di `lib/site.ts`.
- * Field tambahan (availability) hanya diisi di sini karena tidak dipakai
- * oleh komponen lain.
+ * Contact profile, single source of truth is in `lib/site.ts`.
+ * Extra field (availability) is only filled here because it's not used
+ * by other components.
  */
 export const profile: Profile = {
   name: site.name,
@@ -43,11 +43,11 @@ export const projects: Project[] = [
   {
     slug: "coffeshop-menu",
     title: "Coffeshop Menu",
-    tagline: "Menu lengkap dalam 1 halaman",
+    tagline: "Full menu in one page",
     summary:
-      "Website menu digital untuk kedai kopi. Menampilkan seluruh menu (kopi, non-kopi, sampai makanan) dalam satu halaman yang ringkas dan mudah dibuka dari HP maupun desktop.",
+      "Digital menu website for a coffee shop. Displays the entire menu (coffee, non-coffee, up to food) in one compact page that's easy to open from mobile or desktop.",
     description:
-      "Website menu digital kedai kopi. Seluruh menu tersaji rapi dalam satu halaman responsif, siap diakses lewat tautan langsung.",
+      "Digital coffee shop menu website. The entire menu is neatly presented in one responsive page, ready to access via direct link.",
 
     role: "Full-Stack Developer",
     timeline: "2026",
@@ -65,9 +65,9 @@ export const projects: Project[] = [
       "Node.js",
     ],
     highlights: [
-      "Menu lengkap tersaji dalam satu halaman.",
-      "Responsif dan nyaman dibuka dari perangkat apa pun.",
-      "Deploy cepat di Cloudflare Pages.",
+      "Full menu presented in one page.",
+      "Responsive and comfortable to open from any device.",
+      "Fast deployment on Cloudflare Pages.",
     ],
 
     liveUrl: "https://mystorymenu.pages.dev",
@@ -76,13 +76,13 @@ export const projects: Project[] = [
     gallery: [
       {
         src: "/projects/coffeshop-menu/screenshot-1.webp",
-        alt: "Tampilan halaman menu Coffeshop Menu",
-        caption: "Halaman utama menu",
+        alt: "Coffeshop Menu menu page view",
+        caption: "Main menu page",
       },
       {
         src: "/projects/coffeshop-menu/screenshot-2.webp",
-        alt: "Detail daftar menu Coffeshop Menu",
-        caption: "Daftar menu",
+        alt: "Coffeshop Menu menu list detail",
+        caption: "Menu list",
       },
     ],
 
@@ -93,11 +93,11 @@ export const projects: Project[] = [
   {
     slug: "reservasi-barbershop",
     title: "Reservasi/Booking Barbershop",
-    tagline: "Sistem reservasi online untuk barbershop",
+    tagline: "Online reservation system for barbershop",
     summary:
-      "Sistem pemesanan antrian dan layanan potong rambut secara online. Pelanggan bisa memilih layanan, tanggal, dan waktuAntrian langsung dari browser tanpa perlu telepon.",
+      "Online queue and haircut service ordering system. Customers can choose service, date, and queue time directly from the browser without needing a phone.",
     description:
-      "Website reservasi barbershop dengan 2 panel: panel customer untuk pemesanan layanan dan waktu antrian, serta panel admin untuk mengoperasikan dashboard dan mengelola reservasi. Antarmuka sederhana dan responsif.",
+      "Barbershop reservation website with 2 panels: customer panel for service and queue time booking, and admin panel for operating the dashboard and managing reservations. Simple and responsive interface.",
     role: "Full-Stack Developer",
     timeline: "2026",
 
@@ -111,9 +111,9 @@ export const projects: Project[] = [
       "Tailwind CSS",
     ],
     highlights: [
-      "Pemesanan layanan dan waktu antrian secara online (panel customer).",
-      "Manajemen antrian dan jadwal booking dari panel admin.",
-      "Antarmuka responsif untuk pelanggan dan admin.",
+      "Online service and queue time booking (customer panel).",
+      "Queue and booking schedule management from admin panel.",
+      "Responsive interface for customers and admin.",
     ],
 
     liveUrl: "https://reservasionline.pages.dev",
@@ -122,18 +122,18 @@ export const projects: Project[] = [
     gallery: [
       {
         src: "/projects/reservasi-barbershop/screenshot-1.png",
-        alt: "Tampilan halaman utama Reservasi Barbershop",
-        caption: "Halaman utama reservasi",
+        alt: "Reservasi Barbershop home page view",
+        caption: "Main reservation page",
       },
       {
         src: "/projects/reservasi-barbershop/screenshot-2.png",
-        alt: "Tampilan pemilihan layanan dan waktu",
-        caption: "Pilih layanan dan waktu",
+        alt: "Service and time selection view",
+        caption: "Choose service and time",
       },
       {
         src: "/projects/reservasi-barbershop/screenshot-3.png",
-        alt: "Tampilan konfirmasi booking",
-        caption: "Konfirmasi pesanan",
+        alt: "Booking confirmation view",
+        caption: "Order confirmation",
       },
     ],
 

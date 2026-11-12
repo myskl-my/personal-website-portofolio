@@ -4,11 +4,11 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { RegisterSection } from "@/components/providers/register-section";
 
 /**
- * Section Projects di homepage.
+ * Projects section on homepage.
  *
- * Menampilkan seluruh project yang tersedia langsung di halaman utama.
- * Tidak ada tautan ke halaman daftar terpisah; setiap kartu project tetap
- * bisa diklik untuk membuka halaman detailnya.
+ * Displays all available projects directly on the main page.
+ * There is no link to a separate list page; each project card can still
+ * be clicked to open its detail page.
  */
 export async function ProjectsSection() {
   const projects = await getProjects();
@@ -20,7 +20,7 @@ export async function ProjectsSection() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             eyebrow="My Projects"
-            description="Semua project yang tersedia ditampilkan di bawah ini. Klik tiap kartu untuk membuka halaman detailnya."
+            description="All available projects are displayed below. Click each card to open its detail page."
           />
         </div>
 

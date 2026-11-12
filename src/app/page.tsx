@@ -6,18 +6,18 @@ import { AboutSection } from "@/components/sections/about-section";
 import { RegisterSection } from "@/components/providers/register-section";
 
 /**
- * Halaman utama, satu halaman utuh dengan navigasi scroll.
+ * Homepage, one full page with scroll navigation.
  *
- *   #top          : hero, paling atas
+ *   #top          : hero, top
  *   #projects     : my projects
- *   #workflow     : alur kerja development
- *   #capabilities : kemampuan teknis
- *   #about        : tentang saya
- *   #contact      : footer, dirender di layout
+ *   #workflow     : development workflow
+ *   #capabilities : technical skills
+ *   #about        : about me
+ *   #contact      : footer, rendered in layout
  *
- * PENTING: tiap section dibungkus `RegisterSection` sendiri, tidak boleh
- * digabung. Kalau dua section berbagi satu wrapper, elemen yang dipantau jadi
- * setinggi dua section sekaligus sehingga indikator navbar terlambat pindah.
+ * IMPORTANT: each section wrapped in its own `RegisterSection`, must not be
+ * combined. If two sections share one wrapper, the monitored element becomes
+ * as tall as two sections at once so the navbar indicator is late to move.
  */
 export default function HomePage() {
   return (

@@ -3,9 +3,9 @@ import { ProjectCard } from "@/components/project/project-card";
 import { cn } from "@/lib/utils";
 
 /**
- * Grid project yang dipakai ulang di homepage (3 unggulan) maupun di halaman
- * `/projects` (semua project). Satu tempat untuk mengatur kolom supaya kedua
- * halaman tetap konsisten.
+ * Project grid reused on homepage (3 featured) as well as on page
+ * `/projects` (all projects). One place to set up columns so both pages
+ * stay consistent.
  */
 export function ProjectGrid({
   projects,

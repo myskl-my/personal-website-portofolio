@@ -58,9 +58,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  // Tema situs default gelap dan `enableSystem={false}`, jadi warna browser
-  // chrome cukup satu warna gelap, tidak diikuti prefers-color-scheme OS
-  // yang bisa bertabrakan dengan tema situs.
+  // Default site theme is dark and `enableSystem={false}`, so browser
+  // chrome is just one dark color, not following OS prefers-color-scheme
+  // which could clash with site theme.
   themeColor: "#1a1512",
   width: "device-width",
   initialScale: 1,
@@ -81,8 +81,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem={false}
           disableTransitionOnChange={false}
         >
-          {/* #site-root dibungkus agar layar sambutan bisa menonaktifkan
-              interaksi konten di belakangnya (inert) selama intro. */}
+          {/* #site-root wrapped so welcome screen can disable
+              interaction with content behind it (inert) during intro. */}
           <div id="site-root" className="flex min-h-dvh flex-col">
             <ScrollSpyProvider sections={[...sectionIds]}>
               <Navbar />

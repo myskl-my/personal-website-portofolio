@@ -5,27 +5,27 @@ import { motion, useReducedMotion } from "framer-motion";
 import { spring } from "@/lib/motion";
 
 /**
- * "Little Blob", karakter maskot orisinal untuk layar sambutan.
+ * "Little Blob", original mascot character for welcome screen.
  *
- * Digambar sepenuhnya dengan SVG sehingga ringan, tajam di segala ukuran, dan
- * mudah dianimasikan tanpa aset eksternal. Warna memakai variabel tema
- * (--blob-*) supaya blob selalu berkontras dengan latar: terang di mode gelap,
- * gelap di mode terang.
+ * Drawn entirely with SVG so lightweight, sharp at all sizes, and easy to
+ * animate without external assets. Color uses theme variables (--blob-*) so
+ * blob always contrasts with background: light in dark mode, dark in light
+ * mode.
  *
- * Pose dikendalikan dari luar lewat prop `pose`; animasi idle (mengambang,
- * bernapas, berkedip) berjalan sendiri di dalam komponen.
+ * Pose controlled from outside via `pose` prop; idle animation (floating,
+ * breathing, blinking) runs on its own inside the component.
  */
 
 export type BlobPose = "idle" | "invite" | "viewer" | "alert" | "happy";
 
 type PoseSpec = {
-  /** Arah pandangan mata (dalam satuan user SVG). */
+  /** Eye gaze direction (in user SVG units). */
   gazeX: number;
   gazeY: number;
-  /** Rotasi lengan (derajat). Negatif = mengangkat. */
+  /** Arm rotation (degrees). Negative = raised. */
   armRight: number;
   armLeft: number;
-  /** Kemiringan ringan seluruh tubuh. */
+  /** Slight tilt of whole body. */
   tilt: number;
   smile: number;
   mouth: { opacity: number; rx: number; ry: number };
@@ -33,13 +33,13 @@ type PoseSpec = {
 
 const POSE: Record<BlobPose, PoseSpec> = {
   idle: { gazeX: 0, gazeY: 0, armRight: 12, armLeft: -8, tilt: 0, smile: 1, mouth: { opacity: 0, rx: 6, ry: 4 } },
-  // Melirik & menunjuk ke tombol di bawah (menunduk ke kanan).
+  // Looking & pointing at button below (tilting right).
   invite: { gazeX: 3, gazeY: 6, armRight: 74, armLeft: -10, tilt: 2, smile: 1, mouth: { opacity: 0, rx: 6, ry: 4 } },
-  // Menatap pengunjung sejenak.
+  // Looking at visitor for a moment.
   viewer: { gazeX: 0, gazeY: -2, armRight: 12, armLeft: -8, tilt: -1, smile: 1, mouth: { opacity: 0, rx: 6, ry: 4 } },
-  // Reaksi saat tombol di-hover / fokus.
+  // Reaction when button is hovered / focused.
   alert: { gazeX: 3, gazeY: 4, armRight: 58, armLeft: 24, tilt: 2, smile: 0.5, mouth: { opacity: 0.9, rx: 7, ry: 6 } },
-  // Reaksi gembira saat masuk.
+  // Happy reaction on enter.
   happy: { gazeX: 0, gazeY: -3, armRight: -58, armLeft: 62, tilt: 0, smile: 0, mouth: { opacity: 1, rx: 11, ry: 10 } },
 };
 
@@ -56,7 +56,7 @@ export function LittleBlob({
   const reduce = useReducedMotion();
   const target = POSE[pose];
 
-  // Mengambang + napas halus (squash & stretch tipis), dimatikan saat
+  // Floating + soft breathing (slight squash & stretch), disabled when
   // prefers-reduced-motion.
   const floatAnimate = reduce
     ? undefined
@@ -65,7 +65,7 @@ export function LittleBlob({
     ? undefined
     : { duration: 5.6, repeat: Infinity, ease: "easeInOut" as const };
 
-  // Kedip sesekali: ry mengecil cepat lalu kembali.
+  // Blinking occasionally: ry shrinks fast then returns.
   const eyeAnimate = reduce ? { ry: 13 } : { ry: [13, 13, 1.5, 13, 13] };
   const eyeTransition = reduce
     ? { duration: 0 }
@@ -80,7 +80,7 @@ export function LittleBlob({
     <svg
       viewBox="0 0 220 210"
       role="img"
-      aria-label="Little Blob, maskot portofolio"
+      aria-label="Little Blob, portfolio mascot"
       className={className}
     >
       <defs>
@@ -98,7 +98,7 @@ export function LittleBlob({
         </radialGradient>
       </defs>
 
-      {/* bayangan lembut di lantai */}
+      {/* soft shadow on floor */}
       <ellipse cx="110" cy="197" rx="66" ry="12" fill="url(#blob-shadow)" />
 
       <motion.g
@@ -111,19 +111,19 @@ export function LittleBlob({
           transition={spring.soft}
           style={{ transformBox: "view-box", transformOrigin: "110px 160px" }}
         >
-          {/* tubuh */}
+          {/* body */}
           <path d={BODY} fill="url(#blob-body)" />
           <path d={BODY} fill="url(#blob-gloss)" />
 
-          {/* pipi samar */}
+          {/* faint cheeks */}
           <ellipse cx="70" cy="144" rx="11" ry="6.5" fill="var(--blob-accent)" opacity="0.16" />
           <ellipse cx="150" cy="144" rx="11" ry="6.5" fill="var(--blob-accent)" opacity="0.16" />
 
-          {/* kaki mungil */}
+          {/* tiny feet */}
           <ellipse cx="90" cy="186" rx="13" ry="8" fill="var(--blob-body-2)" />
           <ellipse cx="130" cy="186" rx="13" ry="8" fill="var(--blob-body-2)" />
 
-          {/* mata, bergerak mengikuti arah pandang, berkedip sendiri */}
+          {/* eyes, move following gaze direction, blink on their own */}
           <motion.g
             animate={{ x: target.gazeX, y: target.gazeY }}
             transition={spring.soft}
@@ -146,12 +146,12 @@ export function LittleBlob({
               animate={eyeAnimate}
               transition={eyeTransition}
             />
-            {/* kilau kecil di mata (tidak ikut berkedip) */}
+            {/* small gleam in eyes (doesn't blink) */}
             <circle cx="89.5" cy="111.5" r="2.6" fill="var(--blob-body-1)" />
             <circle cx="137.5" cy="111.5" r="2.6" fill="var(--blob-body-1)" />
           </motion.g>
 
-          {/* mulut: garis senyum + mulut terbuka (di-crossfade) */}
+          {/* mouth: smile line + open mouth (cross-faded) */}
           <motion.path
             d="M96 150 Q110 162 124 150"
             fill="none"
@@ -169,7 +169,7 @@ export function LittleBlob({
             transition={spring.snap}
           />
 
-          {/* lengan kanan (menunjuk) */}
+          {/* right arm (pointing) */}
           <motion.g
             style={{ transformBox: "view-box", transformOrigin: "160px 141px" }}
             animate={{ rotate: target.armRight }}
@@ -178,7 +178,7 @@ export function LittleBlob({
             <rect x="158" y="134" width="31" height="13" rx="6.5" fill="var(--blob-body-1)" />
           </motion.g>
 
-          {/* lengan kiri */}
+          {/* left arm */}
           <motion.g
             style={{ transformBox: "view-box", transformOrigin: "60px 141px" }}
             animate={{ rotate: target.armLeft }}

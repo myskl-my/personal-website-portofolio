@@ -22,7 +22,7 @@ const CAPABILITIES: Capability[] = [
     technologies: ["PHP", "Laravel", "MySQL"],
     career: "Backend Developer / Web Developer",
     description:
-      "Logika server, alur data, dan basis data yang andal untuk aplikasi web produksi.",
+      "Server logic, data flow, and reliable database for production web applications.",
   },
   {
     icon: Layout,
@@ -30,7 +30,7 @@ const CAPABILITIES: Capability[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     career: "Frontend Developer",
     description:
-      "Antarmuka modern, responsif, dan mudah diakses dengan stack yang ringkas.",
+      "Modern, responsive, and accessible interface with a lightweight stack.",
   },
   {
     icon: Layers,
@@ -38,7 +38,7 @@ const CAPABILITIES: Capability[] = [
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     career: "Frontend Developer / Full-Stack Developer",
     description:
-      "Aplikasi full-stack dengan Next.js, dari frontend hingga backend dalam satu ekosistem.",
+      "Full-stack application with Next.js, from frontend to backend in one ecosystem.",
   },
   {
     icon: Smartphone,
@@ -46,7 +46,7 @@ const CAPABILITIES: Capability[] = [
     technologies: ["Flutter", "Dart"],
     career: "Mobile Developer",
     description:
-      "Aplikasi mobile multiplatform dengan satu basis kode untuk Android dan iOS.",
+      "Multiplatform mobile application with one codebase for Android and iOS.",
   },
   {
     icon: Tablet,
@@ -54,7 +54,7 @@ const CAPABILITIES: Capability[] = [
     technologies: ["Kotlin", "Jetpack Compose"],
     career: "Android Developer",
     description:
-      "Aplikasi Android native dengan Kotlin dan antarmuka modern via Jetpack Compose.",
+      "Native Android application with Kotlin and modern UI via Jetpack Compose.",
   },
 ];
 
@@ -68,11 +68,11 @@ export function CapabilitiesSection() {
         <SectionHeading
           eyebrow="Skills"
           description={
-            <>
-              Teknologi yang menjadi fokus pembelajaran dan pengembangan proyek,
-              disusun berdasarkan kebutuhan rekrutmen Web Developer. Daftar ini
-              menampilkan area fokus, bukan klaim kemampuan penuh.
-            </>
+          <>
+            Technologies that are the focus of learning and project development,
+            arranged based on Web Developer recruitment needs. This list
+            displays focus areas, not claims of full capability.
+          </>
           }
         />
 

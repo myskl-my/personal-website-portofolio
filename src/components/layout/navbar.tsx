@@ -42,7 +42,7 @@ export function Navbar() {
     };
   }, [open]);
 
-  // Escape menutup sheet mobile, perilaku dialog yang diharapkan keyboard user.
+      // Escape closes mobile sheet, expected dialog behavior for keyboard user.
   React.useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -55,28 +55,28 @@ export function Navbar() {
   const handleNav = React.useCallback(
     (id: string) => {
       setOpen(false);
-      // Di halaman lain (mis. /projects) section tidak ada di DOM, jadi
-      // diarahkan dulu ke beranda dengan anchor. Di beranda sendiri, cukup
-      // pakai animasi scroll supaya URL tetap bersih tanpa hash.
+      // On other pages (e.g. /projects) section is not in DOM, so
+      // navigate first to homepage with anchor. On homepage itself, just
+      // use scroll animation so URL stays clean without hash.
       if (!onHome) {
         router.push(id === "top" ? "/" : `/#${id}`);
         return;
       }
-      // Beri jeda satu frame supaya sheet mobile sempat mulai menutup
-      // sebelum scroll dijalankan.
+      // Give one frame delay so mobile sheet has time to start closing
+      // before scroll runs.
       requestAnimationFrame(() => scrollTo(id));
     },
     [scrollTo, onHome, router],
   );
 
-  // Di halaman non-home hanya `#contact` (footer) yang ada di DOM, jadi
-  // scroll-spy akan selalu menyimpulkan "Contact" aktif, itu menyesatkan.
-  // Indikator tab hanya dihitung di beranda tempat seluruh section ada.
+  // On non-home pages only `#contact` (footer) is in DOM, so
+  // scroll-spy will always conclude "Contact" active, which is misleading.
+  // Tab indicator only counted on homepage where all sections exist.
   const isActive = (id: string) => onHome && activeId === id;
 
   return (
     <>
-      {/* bar progres scroll */}
+      {/* scroll progress bar */}
       <motion.div
         aria-hidden
         style={{ scaleX: progress }}

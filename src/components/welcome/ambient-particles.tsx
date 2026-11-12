@@ -5,15 +5,15 @@ import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Lapisan partikel ambien di belakang konten sambutan.
+ * Ambient particle layer behind welcome content.
  *
- * Sengaja memakai sedikit elemen `span` dengan animasi CSS (bukan canvas atau
- * library) agar ringan dan otomatis berhenti saat overlay dilepas. Jumlah
- * partikel dikurangi di layar kecil, dan seluruh gerakan dimatikan saat
+ * Deliberately uses a few `span` elements with CSS animation (not canvas or
+ * library) to stay lightweight and automatically stop when overlay is removed.
+ * Particle count reduced on small screens, and all movement disabled when
  * `prefers-reduced-motion`.
  *
- * Lapisan ini murni dekoratif: `aria-hidden`, `pointer-events-none`, dan tidak
- * menangkap klik.
+ * This layer is purely decorative: `aria-hidden`, `pointer-events-none`, and
+ * does not capture clicks.
  */
 
 type Particle = {
@@ -50,8 +50,8 @@ export function AmbientParticles({ className }: { className?: string }) {
   const [particles] = React.useState(() => makeParticles(count));
   const layerRef = React.useRef<HTMLDivElement>(null);
 
-  // Parallax pointer yang sangat halus (desktop saja). Opsional & murah:
-  // satu listener, di-throttle lewat rAF, menulis satu CSS variable.
+  // Very smooth parallax pointer (desktop only). Optional & cheap:
+  // one listener, throttled via rAF, writes one CSS variable.
   React.useEffect(() => {
     if (reduce) return;
     if (typeof window === "undefined") return;

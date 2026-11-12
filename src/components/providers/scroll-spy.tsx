@@ -3,17 +3,17 @@
 import * as React from "react";
 
 /**
- * Melacak section mana yang sedang terlihat (scroll spy).
+ * Tracks which section is currently visible (scroll spy).
  *
- * Kenapa tidak pakai `usePathname`? Halaman ini satu halaman penuh -
- * menggulir tidak mengubah route, sehingga `pathname` selalu sama dan tab
- * aktif tidak pernah ikut berubah. Sumber kebenaran yang tepat adalah posisi
- * scroll. Cara kerjanya dijelaskan di efek `compute` di bawah.
+ * Why not use `usePathname`? This page is one full page - scrolling doesn't
+ * change route, so `pathname` is always the same and active tab never
+ * changes. The right source of truth is scroll position. How it works is
+ * explained in the `compute` effect below.
  */
 
 type ScrollSpyValue = {
   activeId: string;
-  /** Diregistrasi ulang saat section berubah (mis. setelah data masuk). */
+  /** Re-registered when section changes (e.g. after data arrives). */
   register: (id: string, el: HTMLElement | null) => void;
 };
 
@@ -36,8 +36,8 @@ export function ScrollSpyProvider({
   const [activeId, setActiveId] = React.useState(sections[0] ?? "");
   const [nodes, setNodes] = React.useState<Record<string, HTMLElement>>({});
 
-  // Disimpan per id di state (bukan ref) supaya Provider ikut re-render
-  // saat section baru muncul, Observer baru lalu dipasang ulang.
+  // Stored per id in state (not ref) so Provider re-renders when new
+  // section appears, Observer is then re-installed.
   const register = React.useCallback((id: string, el: HTMLElement | null) => {
     setNodes((prev) => {
       if (el) {
@@ -51,8 +51,9 @@ export function ScrollSpyProvider({
     });
   }, []);
 
-  // Di-memo berdasarkan nodes: tanpa ini array baru terbentuk tiap render
-  // dan effect di bawah bongkar-pasang listener scroll percuma.
+  // Memoized based on nodes: without this a new array is formed every
+  // render and the effect below installs/uninstalls scroll listener
+  // pointlessly.
   const present = React.useMemo(
     () => sections.filter((id) => nodes[id]),
     [sections, nodes],
@@ -60,21 +61,21 @@ export function ScrollSpyProvider({
   const presentKey = present.join("|");
 
   /**
-   * Menentukan section aktif dari POSISI SCROLL, bukan dari rasio
-   * perpotongan.
+   * Determines active section from SCROLL POSITION, not from intersection
+   * ratio.
    *
-   * Kenapa tidak IntersectionObserver?
-   *   Observer membandingkan "seberapa banyak tiap section terlihat" dengan
-   *   `rootMargin` tipis (±45%). Section yang sangat tinggi, seperti hero -
-   *   tetap dianggap aktif sangat lama setelah section berikutnya mulai
-   *   terlihat, sehingga indikator navbar terlambat berpindah.
+   * Why not IntersectionObserver?
+   *   Observer compares "how much of each section is visible" with thin
+   *   `rootMargin` (±45%). Very tall section, like hero - still considered
+   *   active long after next section starts to appear, so navbar indicator
+   *   is late to switch.
    *
-   * Aturannya sekarang jauh sederhana dan lebih bisa diprediksi:
-   *   satu garis imajiner di 35% tinggi viewport. Section terakhir yang
-   *   puncaknya sudah melewati garis itu adalah section aktif.
+   * The rule is now much simpler and more predictable: one imaginary line
+   *   at 35% of viewport height. The last section whose top has passed that
+   *   line is the active section.
    *
-   * Efeknya persis seperti yang diharapkan pengguna: begitu area Projects
-   *   masuk ke bagian atas layar, indikator langsung pindah ke Projects.
+   * Effect is exactly what user expects: as soon as Projects area enters
+   *   top of screen, indicator immediately moves to Projects.
    */
   React.useEffect(() => {
     if (present.length === 0) return;
@@ -89,7 +90,7 @@ export function ScrollSpyProvider({
         if (el.getBoundingClientRect().top <= line) current = id;
       }
 
-      // Saat halaman sudah hampir habis digulir, section terakhir yang aktif.
+      // When page is almost scrolled to bottom, last active section.
       const atBottom =
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 2;

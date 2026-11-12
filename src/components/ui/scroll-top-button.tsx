@@ -4,11 +4,11 @@ import { ArrowUp } from "lucide-react";
 import { scrollToElement } from "@/lib/smooth-scroll";
 
 /**
- * Tombol "kembali ke atas" yang berfungsi di halaman mana pun.
+ * Back to top button that works on any page.
  *
- * Memakai animasi scroll sendiri (`scrollToElement`) supaya konsisten dengan
- * navigasi navbar, dan tidak bergantung pada keberadaan elemen `#top`, di
- * halaman /projects pun tombol ini tetap bekerja.
+ * Uses own scroll animation (`scrollToElement`) to stay consistent with
+ * navbar navigation, and doesn't depend on `#top` element existence. On
+ * /projects page this button still works.
  */
 export function ScrollTopButton({ className }: { className?: string }) {
   return (

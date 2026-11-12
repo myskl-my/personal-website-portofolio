@@ -10,19 +10,19 @@ import { spring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 /**
- * Kartu project.
+ * Project card.
  *
- * Cover memakai `coverImage` bila ada, kalau tidak dipakai gradient
- * dari warna kategori.
+ * Cover uses `coverImage` if available, otherwise gradient from category
+ * color.
  */
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const reduce = useReducedMotion();
   const ref = React.useRef<HTMLDivElement>(null);
   const accent = categoryAccent[project.category];
 
-  // Spotlight: tulis posisi kursor ke CSS custom property, consumed oleh
-  // kelas `.spotlight` di globals.css. Dipisah dari React state supaya
-  // tidak memicu re-render tiap mousemove.
+  // Spotlight: write cursor position to CSS custom property, consumed by
+  // `.spotlight` class in globals.css. Separated from React state so it
+  // doesn't trigger re-render on every mousemove.
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el || reduce) return;
@@ -49,8 +49,8 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           "hover:border-[var(--color-line-2)]",
         )}
       >
-        {/* cover: gambar kalau ada, gradient kalau belum, seluruh area
-            adalah link ke halaman detail supaya klik cover tidak mati. */}
+        {/* cover: image if available, gradient if not, entire area is link
+            to detail page so clicking cover doesn't go dead. */}
         <Link
           href={getDetailHref(project)}
           className="relative block aspect-[16/9] w-full overflow-hidden border-b border-[var(--color-line)]"

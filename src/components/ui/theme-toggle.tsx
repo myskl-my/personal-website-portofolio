@@ -7,23 +7,23 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { spring } from "@/lib/motion";
 
-/** Subscribe kosong, dipakai useSyncExternalStore untuk deteksi mount. */
+/** Empty subscribe, used with useSyncExternalStore for mount detection. */
 const emptySubscribe = () => () => {};
 
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
 
-  // useSyncExternalStore menghindari hydration mismatch tanpa setState
-  // di dalam effect (larangan react-hooks/set-state-in-effect).
+  // useSyncExternalStore avoids hydration mismatch without setState
+  // inside effect (react-hooks/set-state-in-effect prohibition).
   const mounted = React.useSyncExternalStore(
     emptySubscribe,
     () => true,
     () => false,
   );
 
-  // Gating dengan `mounted` penting: di server resolvedTheme tidak tersedia,
-  // sehingga tanpa gating nilai isDark berbeda saat hidrasi dan memicu
-  // hydration mismatch (React 19 bisa meninggalkan aria-label yang basi).
+  // Gating with `mounted` is important: on server resolvedTheme is not
+  // available, so without gating isDark value differs during hydration and
+  // triggers hydration mismatch (React 19 may leave stale aria-label).
   const isDark = mounted && resolvedTheme === "dark";
 
   return (
@@ -40,7 +40,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         className,
       )}
     >
-      {/* lingkaran cahaya kecil yang ikut bergerak */}
+      {/* small light circle that moves along */}
       <motion.span
         aria-hidden
         layout

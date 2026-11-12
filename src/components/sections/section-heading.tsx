@@ -2,10 +2,10 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Judul section yang dipakai ulang di seluruh halaman.
+ * Section title reused across all pages.
  *
- * Hanya eyebrow (label kategori) yang ditampilkan; deskripsi opsional.
- * Eyebrow sudah cukup menjelaskan isi bagian tersebut.
+ * Only eyebrow (category label) is displayed; description is optional.
+ * Eyebrow alone is enough to explain what that section contains.
  */
 export function SectionHeading({
   eyebrow,

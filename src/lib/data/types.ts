@@ -1,16 +1,16 @@
 /**
- * Tipe data tunggal untuk seluruh situs.
+ * Single data type for the whole site.
  *
- * Seluruh field yang dipakai komponen UI dideklarasikan di sini.
- * Sumber data ada di `local.ts` (seed statis yang dibundel ke build).
- * Kalau nanti ada kolom/sumber data baru, tambahkan di sini lebih dulu
- * sebelum dipakai di komponen.
+ * All fields used by UI components are declared here.
+ * Data source is in `local.ts` (static seed bundled into build).
+ * If there are new columns/data sources later, add them here first
+ * before using in components.
  */
 
-/** Platform tempat project bisa dijalankan, menentukan tombol mana yang muncul. */
+/** Platform where project can run, determining which buttons appear. */
 export type Platform = "Web" | "Android" | "Windows" | "Linux" | "macOS";
 
-/** Kategori project untuk filter. */
+/** Project category for filter. */
 export type Category =
   | "web"
   | "mobile"
@@ -18,16 +18,16 @@ export type Category =
   | "backend"
   | "infrastructure";
 
-/** Status publikasi. Hanya `published` yang tampil di situs publik. */
+/** Publication status. Only `published` shows on the public site. */
 export type ProjectStatus = "draft" | "published" | "archived";
 
 export interface ProjectLink {
-  /** Label tombol, mis. "Buka Live Site", "Download APK". */
+  /** Button label, e.g. "Open Live Site", "Download APK". */
   label: string;
   href: string;
-  /** `internal` = halaman kita sendiri, `external` = keluar ke domain lain. */
+  /** `internal` = our own page, `external` = out to another domain. */
   kind: "internal" | "external";
-  /** Ikon kunci di `components/icons` atau lucide, opsional. */
+  /** Key icon from `components/icons` or lucide, optional. */
   icon?: string;
 }
 
@@ -38,68 +38,68 @@ export interface ProjectMedia {
 }
 
 /**
- * Blok studi kasus terstruktur.
+ * Structured case study block.
  *
- * Semua field opsional: halaman detail hanya merender bagian yang terisi,
- * jadi project yang belum punya data lengkap tetap tampil rapi.
+ * All fields optional: detail page only renders filled parts,
+ * so project without complete data still looks neat.
  */
 export interface ProjectCaseStudy {
-  /** Ringkasan singkat, satu paragraf pembuka. */
+  /** Short summary, one opening paragraph. */
   overview?: string;
-  /** Masalah yang melatarbelakangi project. */
+  /** Problem backgrounding the project. */
   problem?: string;
-  /** Pendekatan solusi yang diambil. */
+  /** Solution approach taken. */
   solution?: string;
-  /** Daftar fitur utama. */
+  /** List of main features. */
   features?: string[];
-  /** Langkah alur kerja development yang dipakai di project ini. */
+  /** Development workflow steps used in this project. */
   aiWorkflow?: string[];
-  /** Tantangan teknis yang dihadapi dan bagaimana diselesaikan. */
+  /** Technical challenges faced and how resolved. */
   challenges?: string[];
 }
 
 /**
- * Satu project di portofolio.
+ * One portfolio project.
  *
- * Catatan soal tautan: field tautan sengaja nullable dan bebas. UI membaca
- * mana saja yang terisi lalu menampilkan tombolnya, bukan lewat enum.
- * Contoh: satu project bisa punya `liveUrl` (web) sekaligus `downloadUrl`
- * (APK) sekaligus `videoUrl` (demo), dan keempat tombol itu muncul bersamaan.
+ * Note on links: link fields intentionally nullable and free. UI reads
+ * whichever is filled and displays its button, not via enum.
+ * Example: one project can have `liveUrl` (web) plus `downloadUrl`
+ * (APK) plus `videoUrl` (demo), and all four buttons appear at once.
  */
 export interface Project {
-  /** URL segment, unik dan stabil: /projects/<slug> */
+  /** URL segment, unique and stable: /projects/<slug> */
   slug: string;
   title: string;
-  /** Satu kalimat singkat, tampil di kartu. */
+  /** One short sentence, shows on card. */
   tagline: string;
-  /** Ringkasan 2–3 kalimat untuk meta description dan preview. */
+  /** 2–3 sentence summary for meta description and preview. */
   summary: string;
-  /** Deskripsi ringkas project (cadangan; belum dirender di UI). */
+  /** Short project description (fallback; not rendered in UI yet). */
   description: string;
-  /** Studi kasus terstruktur, dipakai halaman detail bila terisi. */
+  /** Structured case study, used by detail page if filled. */
   caseStudy?: ProjectCaseStudy;
 
-  /** Penulis project ini, mis. "Backend, Android, DevOps". */
+  /** Author of this project, e.g. "Backend, Android, DevOps". */
   role: string;
-  /** Contoh: "2025, 2026" atau "2026, sekarang". */
+  /** Example: "2025, 2026" or "2026, present". */
   timeline: string;
 
-  /** Platform project, dipakai untuk badge dan label tombol download.
-   * Lihat `lib/project-links.ts`. */
+  /** Project platform, used for badge and download button label.
+   * See `lib/project-links.ts`. */
   platforms: Platform[];
   category: Category;
 
-  /** Nama teknologi yang tampil sebagai badge. */
+  /** Technology name shown as badge. */
   techStack: string[];
 
-  /** Poin-poin pencapaian, tampil sebagai daftar bullet. */
+  /** Achievement points, shown as bullet list. */
   highlights: string[];
 
-  /** Tautan, semua opsional, tidak semuanya perlu diisi. */
+  /** Links, all optional, not all need to be filled. */
   liveUrl?: string;
   downloadUrl?: string;
   repoUrl?: string;
-  /** YouTube (atau platform lain) untuk demo video. */
+  /** YouTube (or other platform) for demo video. */
   videoUrl?: string;
 
   coverImage?: string;
@@ -107,11 +107,11 @@ export interface Project {
 
   featured: boolean;
   status: ProjectStatus;
-  /** Urutan tampil, kecil lebih dulu. */
+  /** Display order, smaller first. */
   order: number;
 }
 
-/** Profil Minimal: fokus ke kontak, bukan biodata panjang. */
+/** Minimal profile: focus on contact, not long bio. */
 export interface Profile {
   name: string;
   tagline: string;
@@ -124,7 +124,7 @@ export interface Profile {
   availability?: string;
 }
 
-/** Bentuk hasil filter, dipakai komponen filter di halaman projects. */
+/** Filter result shape, used by filter component on projects page. */
 export interface ProjectFilter {
   category?: Category | "all";
   platform?: Platform | "all";

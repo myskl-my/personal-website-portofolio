@@ -2,12 +2,12 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Kartu kode bergaya editor, dipakai sebagai elemen visual di hero.
+ * Editor-styled code card, used as visual element in hero.
  *
- * Isinya sengaja potongan alur kerja, bukan kode project asli, tujuannya
- * menggambarkan cara kerja (rencana, implementasi, debug, uji, rilis), bukan
- * mengklaim hasil. Murni presentasional, tanpa state, supaya bisa dirender
- * sebagai bagian dari hero di klien.
+ * Content is deliberately a workflow snippet, not real project code, its
+ * purpose is to describe how it works (plan, implement, debug, test,
+ * release), not to claim results. Purely presentational, no state, so it
+ * can be rendered as part of hero on client.
  */
 
 const kw = "text-[var(--color-primary)]";

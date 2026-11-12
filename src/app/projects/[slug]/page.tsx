@@ -142,13 +142,13 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       )}
 
-      {/* stack yang dipakai */}
+      {/* stack used */}
       <section className="mt-20 border-y border-[var(--color-line)] bg-[var(--color-bg-2)]">
         <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading
               eyebrow="Stack"
-              description="Teknologi yang digunakan untuk membangun portfolio ini."
+              description="Technologies used to build this portfolio."
             />
           </div>
 

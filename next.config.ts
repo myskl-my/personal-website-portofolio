@@ -1,18 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Static export → hasil build berupa folder `out/` berisi HTML/CSS/JS murni.
-  // Bisa dihosting di Cloudflare Pages, Netlify, dsb.
-  // Syarat: tidak boleh memakai fitur yang butuh server Node.js
+  // Static export → build output is `out/` folder containing pure HTML/CSS/JS.
+  // Can be hosted on Cloudflare Pages, Netlify, etc.
+  // Requirement: cannot use features that need Node.js server
   // (server actions, cookies, rewrites, ISR, proxy).
   //
-  // Catatan: `cacheComponents` (PPR) tidak kompatibel dengan export mode,
-  // sehingga keduanya tidak bisa diaktifkan bersamaan.
+  // Note: `cacheComponents` (PPR) is not compatible with export mode,
+  // so both cannot be enabled at the same time.
   output: "export",
   trailingSlash: true,
   images: {
-    // Optimasi gambar butuh server; untuk static export di-skip,
-    // gambar disajikan apa adanya oleh CDN hosting.
+    // Image optimization needs server; for static export skipped, images
+    // served as-is by CDN hosting.
     unoptimized: true,
   },
   turbopack: {

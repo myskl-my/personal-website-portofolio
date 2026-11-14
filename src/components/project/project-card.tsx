@@ -64,8 +64,8 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 text-[14px] font-medium text-[var(--color-ink)] transition-all duration-300",
-                "hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:text-[var(--color-primary)] hover:shadow-[var(--shadow-card)]",
+                "mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-transparent bg-[var(--color-primary)] px-5 text-[14px] font-medium text-[var(--color-on-primary)] transition-all duration-300",
+                "hover:-translate-y-0.5 hover:bg-[var(--color-primary-2)] hover:shadow-[var(--shadow-card)]",
                 "active:scale-95",
               )}
             >

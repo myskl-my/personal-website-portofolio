@@ -80,9 +80,9 @@ export function Hero() {
             <button
               type="button"
               onClick={() => scrollTo("contact")}
-              className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-7 text-[15px] font-semibold text-[var(--color-ink)] transition-[box-shadow,transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:shadow-[var(--shadow-card)] active:scale-[0.97]"
+              className="group inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-transparent bg-[var(--color-primary)] px-7 text-[15px] font-semibold text-[var(--color-on-primary)] transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-primary-2)] hover:shadow-[var(--shadow-float)] active:scale-[0.97]"
             >
-              <MessageCircle className="h-4 w-4 text-[var(--color-primary)]" />
+              <MessageCircle className="h-4 w-4 text-[var(--color-on-primary)]" />
               <span>Contact Me</span>
             </button>
           </motion.div>

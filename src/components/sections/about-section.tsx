@@ -1,17 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github";
 import { site } from "@/lib/site";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { RegisterSection } from "@/components/providers/register-section";
-import { useScrollToSection } from "@/lib/smooth-scroll";
 import { spring } from "@/lib/motion";
 
 export function AboutSection() {
   const reduce = useReducedMotion();
-  const scrollTo = useScrollToSection();
 
   return (
     <RegisterSection id="about">
@@ -73,14 +70,6 @@ export function AboutSection() {
             </dl>
 
             <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
-              <button
-                type="button"
-                onClick={() => scrollTo("contact")}
-                className="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-full bg-[var(--color-primary)] px-5 text-[14px] font-semibold text-[var(--color-on-primary)] transition-transform duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Contact Me
-              </button>
               <a
                 href={site.github}
                 target="_blank"

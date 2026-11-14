@@ -1,28 +1,24 @@
 ﻿"use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import type { Project } from "@/lib/data/types";
-import { categoryAccent, categoryLabel, getDetailHref } from "@/lib/project-links";
+import { categoryAccent, categoryLabel } from "@/lib/project-links";
 import { spring } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 /**
  * Project card.
  *
- * Cover uses `coverImage` if available, otherwise gradient from category
- * color.
+ * Shows category badge, project title, and a "Go to Project" button that
+ * opens the live site in a new tab. No cover image or screenshot.
  */
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const reduce = useReducedMotion();
   const ref = React.useRef<HTMLDivElement>(null);
   const accent = categoryAccent[project.category];
 
-  // Spotlight: write cursor position to CSS custom property, consumed by
-  // `.spotlight` class in globals.css. Separated from React state so it
-  // doesn't trigger re-render on every mousemove.
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el || reduce) return;
@@ -49,50 +45,6 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           "hover:border-[var(--color-line-2)]",
         )}
       >
-        {/* cover: image if available, gradient if not, entire area is link
-            to detail page so clicking cover doesn't go dead. */}
-        <Link
-          href={getDetailHref(project)}
-          className="relative block aspect-[16/9] w-full overflow-hidden border-b border-[var(--color-line)]"
-          aria-label={`View details for ${project.title}`}
-        >
-          {project.coverImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={project.coverImage}
-              alt={project.title}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-smooth)] group-hover:scale-[1.05]"
-            />
-          ) : (
-            <div
-              className="h-full w-full transition-transform duration-700 ease-[var(--ease-smooth)] group-hover:scale-105"
-              style={{
-                background: `linear-gradient(135deg, color-mix(in srgb, ${accent} 26%, var(--color-surface)), color-mix(in srgb, ${accent} 6%, var(--color-surface-2)))`,
-              }}
-            >
-              <div
-                aria-hidden
-                className="h-full w-full opacity-[0.35]"
-                style={{
-                  backgroundImage: `radial-gradient(circle at 30% 25%, color-mix(in srgb, ${accent} 55%, transparent) 0%, transparent 55%), radial-gradient(circle at 78% 80%, color-mix(in srgb, var(--color-mauve) 42%, transparent) 0%, transparent 58%)`,
-                }}
-              />
-            </div>
-          )}
-
-          {/* overlay hover */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 flex items-end justify-center bg-[var(--color-bg)]/55 opacity-0 backdrop-blur-[2px] transition-opacity duration-400 group-hover:opacity-100"
-          >
-            <span className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-[var(--color-surface)] px-4 py-2 text-[13px] font-semibold text-[var(--color-ink)] shadow-[var(--shadow-card)]">
-              View Detail
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </span>
-          </div>
-        </Link>
-
-        {/* isi */}
         <div className="flex flex-1 flex-col p-4 sm:p-5">
           <div className="min-w-0">
             <p
@@ -102,17 +54,27 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
               {categoryLabel[project.category]}
             </p>
             <h3 className="mt-1.5 truncate text-[17px] font-semibold tracking-tight text-[var(--color-ink)] sm:text-[18px]">
-              <Link
-                href={getDetailHref(project)}
-                className="outline-none transition-colors hover:text-[var(--color-primary)] focus-visible:text-[var(--color-primary)]"
-              >
-                {project.title}
-              </Link>
+              {project.title}
             </h3>
           </div>
+
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                "mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 text-[14px] font-medium text-[var(--color-ink)] transition-all duration-300",
+                "hover:-translate-y-0.5 hover:border-[var(--color-line-2)] hover:text-[var(--color-primary)] hover:shadow-[var(--shadow-card)]",
+                "active:scale-95",
+              )}
+            >
+              Go to Project
+              <ExternalLink className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+          )}
         </div>
       </div>
     </motion.article>
   );
 }
-

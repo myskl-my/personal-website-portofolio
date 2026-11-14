@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="DC">
   <defs>
     <linearGradient id="dc-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2a2118" />
-      <stop offset="1" stop-color="#1a1512" />
+      <stop offset="0" stop-color="#0f172a" />
+      <stop offset="1" stop-color="#1e1b4b" />
     </linearGradient>
   </defs>
 
-  <!-- Tile mengikuti desain logo di navbar: kotak cokelat gelap,
-       gradient hangat, border tipis, monogram DC mono bold. -->
-  <rect width="32" height="32" rx="10.5" fill="#221c18" />
+  <!-- Tile mengikuti desain logo di navbar: kotak slate gelap,
+       gradient indigo, border tipis, monogram DC mono bold. -->
+  <rect width="32" height="32" rx="10.5" fill="#0f172a" />
   <rect width="32" height="32" rx="10.5" fill="url(#dc-bg)" opacity="0.8" />
-  <rect x="0.5" y="0.5" width="31" height="31" rx="10" fill="none" stroke="#3a322b" stroke-width="1" />
+  <rect x="0.5" y="0.5" width="31" height="31" rx="10" fill="none" stroke="#334155" stroke-width="1" />
 
   <!-- Monogram DC: kedua huruf digambar sebagai path bertepi bulat dengan
        ketebalan garis sama dan tinggi sama supaya simetris dan konsisten,
        tanpa bergantung font yang tersedia di browser. -->
-  <g fill="none" stroke="#e8c9a0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#818cf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <!-- D: stem kiri + busur bowl kanan -->
     <path d="M7.5 20.8 V11.2 H9.1 a4.8 4.8 0 0 1 0 9.6 H7.5" />
     <!-- C: busur terbuka ke kanan, r sama dengan tinggi D -->

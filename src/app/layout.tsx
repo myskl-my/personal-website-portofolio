@@ -61,7 +61,7 @@ export const viewport: Viewport = {
   // Default site theme is dark and `enableSystem={false}`, so browser
   // chrome is just one dark color, not following OS prefers-color-scheme
   // which could clash with site theme.
-  themeColor: "#1a1512",
+  themeColor: "#0f172a",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
